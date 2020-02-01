@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class Plank : MonoBehaviour
 {
-    private float moveSpeed;
-
-    private Rigidbody rb;
+    public Transform ItemInstanceParent;
+    [Space(2.5f)]
+    public List<GameObject> Itens;
+    
+    private float _moveSpeed;
+    private Rigidbody _rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        // Randomiza uma velocidade para a plank entre 3 e 5 (inteiros)
-        moveSpeed = Random.Range(3, 6);
-        Destroy(gameObject, 5f);
+        _rb = GetComponent<Rigidbody>();
+        _moveSpeed = Random.Range(3, 6);
+        SpawnItem();
+        
+        Destroy(transform.parent.gameObject, 5f);
    }
 
     private void FixedUpdate()
     {
-        rb.velocity = transform.right * moveSpeed;
+        _rb.velocity = -1 * transform.forward * _moveSpeed;
     }
 
+    private void SpawnItem() 
+    {
+        int randomIndex = Random.Range(0, Itens.Count + 1);
+
+        GameObject item = Instantiate(Itens[randomIndex], ItemInstanceParent.position, Quaternion.identity, ItemInstanceParent); 
+    }
 }

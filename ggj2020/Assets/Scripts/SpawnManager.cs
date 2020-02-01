@@ -10,11 +10,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float maxTimeBetweenSpawns = 0;
     [SerializeField] private List<GameObject> grabbableObjects = new List<GameObject>();
 
-    private float spawnTimerLeft = 0;
-    private float spawnTimerRight = 0;
+    private float _spawnTimerLeft = 0;
+    private float _spawnTimerRight = 0;
 
-    private float randomSpawnTimeLeft = 0;
-    private float randomSpawnTimeRight = 0;
+    private float _randomSpawnTimeLeft = 0;
+    private float _randomSpawnTimeRight = 0;
 
     private void Start()
     {
@@ -24,15 +24,15 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        spawnTimerLeft += Time.deltaTime;
-        spawnTimerRight += Time.deltaTime;
+        _spawnTimerLeft += Time.deltaTime;
+        _spawnTimerRight += Time.deltaTime;
 
-        if (spawnTimerLeft > randomSpawnTimeLeft)
+        if (_spawnTimerLeft > _randomSpawnTimeLeft)
         {
             SpawnLeft();
         }
 
-        if (spawnTimerRight > randomSpawnTimeRight)
+        if (_spawnTimerRight > _randomSpawnTimeRight)
         {
             SpawnRight();
         }
@@ -41,27 +41,27 @@ public class SpawnManager : MonoBehaviour
 
     private void SetRandomSpawnTimeLeft()
     {
-        randomSpawnTimeLeft = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
+        _randomSpawnTimeLeft = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
     }
 
     private void SetRandomSpawnTimeRight()
     {
-        randomSpawnTimeRight = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
+        _randomSpawnTimeRight = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
     }
 
     private void SpawnLeft()
     {
-        GameObject plank = Instantiate(RandomGrabbableObject(), leftSpawnPoint.position, Quaternion.identity);
+        GameObject plank = Instantiate(RandomGrabbableObject(), leftSpawnPoint.position, Quaternion.identity, leftSpawnPoint);
 
-        spawnTimerLeft = 0;
+        _spawnTimerLeft = 0;
         SetRandomSpawnTimeLeft();
     }
 
     private void SpawnRight()
     {
-        GameObject plank = Instantiate(RandomGrabbableObject(), rightSpawnPoint.position, Quaternion.identity);
+        GameObject plank = Instantiate(RandomGrabbableObject(), rightSpawnPoint.position, Quaternion.identity, rightSpawnPoint);
 
-        spawnTimerRight = 0;
+        _spawnTimerRight = 0;
         SetRandomSpawnTimeRight();       
     }
 
