@@ -371,9 +371,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftSpawnPoint: {fileID: 141268487}
   rightSpawnPoint: {fileID: 1159800755}
-  minTimeBetweenSpawns: 2
-  maxTimeBetweenSpawns: 10
-  plank: {fileID: 4919426191429179794, guid: fa08988e2cca9fe4ab4a3d4e1b4238f1, type: 3}
+  minTimeBetweenSpawns: 1
+  maxTimeBetweenSpawns: 7
+  grabbableObjects:
+  - {fileID: 4919426191429179794, guid: ce29e91da3bfda34aa6fe8be3bba2be8, type: 3}
+  - {fileID: 4919426191429179794, guid: 377e70970ddbaff43adfeaa5522fa829, type: 3}
+  - {fileID: 4919426191429179794, guid: 844587ea806b5ab4f970548f50776c4e, type: 3}
 --- !u!1 &254400140
 GameObject:
   m_ObjectHideFlags: 0
