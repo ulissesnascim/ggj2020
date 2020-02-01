@@ -8,7 +8,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private Transform rightSpawnPoint = null;
     [SerializeField] private float minTimeBetweenSpawns = 0;
     [SerializeField] private float maxTimeBetweenSpawns = 0;
-    [SerializeField] private List<GameObject> grabbableObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> planks = new List<GameObject>();
 
     private float _spawnTimerLeft = 0;
     private float _spawnTimerRight = 0;
@@ -62,12 +62,12 @@ public class SpawnManager : MonoBehaviour
         GameObject plank = Instantiate(RandomGrabbableObject(), rightSpawnPoint.position, Quaternion.identity);
 
         _spawnTimerRight = 0;
-        SetRandomSpawnTimeRight();       
+        SetRandomSpawnTimeRight();
     }
 
     private GameObject RandomGrabbableObject()
     {
-        int index = Random.Range(0, grabbableObjects.Count);
-        return grabbableObjects[index];
+        int index = Random.Range(0, planks.Count);
+        return planks[index];
     }
 }

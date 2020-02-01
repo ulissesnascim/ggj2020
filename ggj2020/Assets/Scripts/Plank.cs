@@ -31,6 +31,6 @@ public class Plank : MonoBehaviour
     {
         int randomIndex = Random.Range(0, Itens.Count);
 
-        GameObject item = Instantiate(Itens[randomIndex], ItemInstanceParent.position, Quaternion.identity, ItemInstanceParent); 
+        GameObject item = Instantiate(Itens[randomIndex], ItemInstanceParent); 
     }
 }
