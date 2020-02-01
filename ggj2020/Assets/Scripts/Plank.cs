@@ -19,7 +19,6 @@ public class Plank : MonoBehaviour
         _moveSpeed = Random.Range(minSpeed, maxSpeed);
         SpawnItem();
         
-        Destroy(gameObject, 5f);
    }
 
     private void FixedUpdate()
