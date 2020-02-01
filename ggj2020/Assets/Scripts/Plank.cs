@@ -16,7 +16,7 @@ public class Plank : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = transform.forward * moveSpeed;
+        rb.velocity = transform.right * moveSpeed;
 
     }
 
