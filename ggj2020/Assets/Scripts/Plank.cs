@@ -27,7 +27,7 @@ public class Plank : MonoBehaviour
 
     private void SpawnItem() 
     {
-        int randomIndex = Random.Range(0, Itens.Count + 1);
+        int randomIndex = Random.Range(0, Itens.Count);
 
         GameObject item = Instantiate(Itens[randomIndex], ItemInstanceParent.position, Quaternion.identity, ItemInstanceParent); 
     }
