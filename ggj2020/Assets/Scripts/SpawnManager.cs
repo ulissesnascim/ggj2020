@@ -67,7 +67,7 @@ public class SpawnManager : MonoBehaviour
 
     private GameObject RandomGrabbableObject()
     {
-        int index = Random.Range(0, grabbableObjects.Count - 1);
+        int index = Random.Range(0, grabbableObjects.Count);
         return grabbableObjects[index];
     }
 }
