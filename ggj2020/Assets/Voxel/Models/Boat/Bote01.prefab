@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8851627856420438165}
   - component: {fileID: 9188843127121793754}
+  - component: {fileID: 1725990961}
   m_Layer: 0
   m_Name: Bote01
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1602940828798368224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 6789099610263305495}
   m_Father: {fileID: 0}
@@ -59,6 +60,25 @@ MonoBehaviour:
   - {fileID: 7371164894516949400, guid: 22eab6640fd190f4a95eb9fee198a23d, type: 3}
   - {fileID: 6268780249465392717, guid: 5baff3e51aca1424c93b4a71be55da5c, type: 3}
   HolesPlane: {fileID: 9006778190262940099}
+--- !u!95 &1725990961
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602940828798368224}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d6246421afcef3d429c20f8d929481a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3482574168607785866
 GameObject:
   m_ObjectHideFlags: 0
