@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7004566187271478939}
   - component: {fileID: 7004566187271478936}
   - component: {fileID: 7004566187271478937}
-  - component: {fileID: 7004566187271478942}
   - component: {fileID: 7004566187271479008}
   m_Layer: 0
   m_Name: Water Level
@@ -59,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8934a77ad83e0f4a9e9d40b3917880b, type: 2}
+  - {fileID: 2100000, guid: 9cba2d94e1844fe499c8224d5767ca67, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,20 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7004566187271478942
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7004566187271478943}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &7004566187271479008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,4 +91,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4fd29b15abe33f448dd552a9b80eac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWaterLevel: 0
+  CurrentWaterLevel: 0
+  MaximumWaterHeight: 0.75
