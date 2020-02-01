@@ -26,7 +26,8 @@ public class WavesController : MonoBehaviour
         for (int i = 0; i < wavesZ; i++)
         {
             instantiatedWave = Instantiate(wave, new Vector3(initialPosX, initialPosY, initialPosZ - i * posModifier), Quaternion.identity);
-            StartCoroutine(instantiatedWave.GetComponent<WaveBehaviour>().WaitAndStartAnim(i * 0.5f));
+            StartCoroutine(instantiatedWave.GetComponent<WaveBehaviour>().WaitAndStartAnim(i
+                * 0.5f));
         }
     }
 }
