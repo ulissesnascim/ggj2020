@@ -137,7 +137,7 @@ Transform:
   m_GameObject: {fileID: 7533592479011882951}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 1374450549534435907}
   m_Father: {fileID: 0}
@@ -159,8 +159,10 @@ MonoBehaviour:
   maxSpeed: 0.1
   ItemInstanceParent: {fileID: 2131395522533326178}
   Itens:
+  - {fileID: 4878920239738995476, guid: d0c53e5d3dbb1064eb3db263113541b4, type: 3}
+  - {fileID: 8795622352039853189, guid: 4d8d5c6bd5728184a803522b6de789ae, type: 3}
   - {fileID: 6477809056999841700, guid: 1dbc4920e4ee0604397ee09e8bf318c2, type: 3}
-  - {fileID: 8050510006560106286, guid: 31d7c20dfafa11b43964f507eba40acb, type: 3}
+  - {fileID: 757685309910324105, guid: 7225cc9850949cd4cbd6cdf7b170a341, type: 3}
 --- !u!54 &-8320043698471175928
 Rigidbody:
   m_ObjectHideFlags: 0

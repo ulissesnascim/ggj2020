@@ -159,8 +159,7 @@ MonoBehaviour:
   maxSpeed: 0.1
   ItemInstanceParent: {fileID: 2131395522533326178}
   Itens:
-  - {fileID: 6477809056999841700, guid: 1dbc4920e4ee0604397ee09e8bf318c2, type: 3}
-  - {fileID: 8050510006560106286, guid: 31d7c20dfafa11b43964f507eba40acb, type: 3}
+  - {fileID: 8262896331783745604, guid: 31d7c20dfafa11b43964f507eba40acb, type: 3}
 --- !u!54 &5869842446088957858
 Rigidbody:
   m_ObjectHideFlags: 0
