@@ -16,7 +16,9 @@ public class PlankDestroy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Plank>())
+
+        //mudar esse código depois
+        if (other.name != "Sea")
             DestroyPlank(other.gameObject);
 
 

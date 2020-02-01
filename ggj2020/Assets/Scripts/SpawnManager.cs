@@ -51,7 +51,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnLeft()
     {
-        GameObject plank = Instantiate(RandomGrabbableObject(), leftSpawnPoint.position, Quaternion.identity, leftSpawnPoint);
+        GameObject plank = Instantiate(RandomGrabbableObject(), leftSpawnPoint.position, Quaternion.identity);
 
         _spawnTimerLeft = 0;
         SetRandomSpawnTimeLeft();
@@ -59,7 +59,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnRight()
     {
-        GameObject plank = Instantiate(RandomGrabbableObject(), rightSpawnPoint.position, Quaternion.identity, rightSpawnPoint);
+        GameObject plank = Instantiate(RandomGrabbableObject(), rightSpawnPoint.position, Quaternion.identity);
 
         _spawnTimerRight = 0;
         SetRandomSpawnTimeRight();       
