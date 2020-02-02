@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8278653618778869909}
   - component: {fileID: 8599152818761232620}
   - component: {fileID: 2991135069443759944}
+  - component: {fileID: 4215702883912819713}
   m_Layer: 0
   m_Name: Model 0
   m_TagString: Untagged
@@ -93,6 +94,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 1022164849881978380}
+--- !u!135 &4215702883912819713
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500126911351843847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.95000005
+  m_Center: {x: 0.049999982, y: -0.25000006, z: 0.050000004}
 --- !u!1 &6477809056999841700
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4689130728175953085}
   - component: {fileID: 1332387055124399825}
+  - component: {fileID: 4666568168906712859}
   m_Layer: 0
   m_Name: SilverTape
   m_TagString: Untagged
@@ -141,6 +156,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4666568168906712859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477809056999841700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8729d87b186618e4190c6c6beaebdeff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!28 &-5418505601076149502
 Texture2D:
   m_ObjectHideFlags: 0
