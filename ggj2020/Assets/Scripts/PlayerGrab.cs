@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerGrab : MonoBehaviour
 {
@@ -33,11 +34,16 @@ public class PlayerGrab : MonoBehaviour
 
     public BucketBehaviour bucket;
 
+    public ArmBehaviour arm;
+
+    FirstPersonController firstPersonController;
+
     // Start is called before the first frame update
     void Start()
     {
         InitPlayerConfiguration();
         layersToIgnoreWhenRaycasting = LayerMask.GetMask("BoatInvisibleWalls", "Player");
+        firstPersonController = GetComponent<FirstPersonController>();
 
     }
 
@@ -196,6 +202,15 @@ public class PlayerGrab : MonoBehaviour
     private void StartCoveringHole()
     {
         isCoveringHole = true;
+
+        arm.Show();
+
+        LockPlayer();
+    }
+
+    private void LockPlayer()
+    {
+        arm.Hide();
     }
 
     private void UncoverHole()
