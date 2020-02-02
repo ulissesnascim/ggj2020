@@ -11,4 +11,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
 
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.LogWarning("Application quit");
+
+    }
 }
