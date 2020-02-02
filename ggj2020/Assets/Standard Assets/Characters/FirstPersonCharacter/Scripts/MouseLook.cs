@@ -35,13 +35,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {         
             if (Player == CurrentPlayer.Player01) 
             {
-                yRot = CrossPlatformInputManager.GetAxis("Mouse X 01") * XSensitivity;
-                xRot = CrossPlatformInputManager.GetAxis("Mouse Y 01") * YSensitivity;
+                yRot = CrossPlatformInputManager.GetAxis("Camera X Player 01") * XSensitivity;
+                xRot = CrossPlatformInputManager.GetAxis("Camera Y Player 01") * YSensitivity;
             }
             else if (Player == CurrentPlayer.Player02) 
             {
-                yRot = CrossPlatformInputManager.GetAxis("Mouse X 02") * XSensitivity;
-                xRot = CrossPlatformInputManager.GetAxis("Mouse Y 02") * YSensitivity;
+                yRot = CrossPlatformInputManager.GetAxis("Camera X Player 02") * XSensitivity;
+                xRot = CrossPlatformInputManager.GetAxis("Camera Y Player 02") * YSensitivity;
             }
            
             m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
