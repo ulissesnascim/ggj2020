@@ -161,6 +161,7 @@ MonoBehaviour:
   Itens:
   - {fileID: 8830172036969622023, guid: 650bef1659aa498469792a5f65a8fa81, type: 3}
   - {fileID: 7489043888452120440, guid: eca3478706df4c144806e5a2c181218a, type: 3}
+  - {fileID: 8361929078706164360, guid: 388ec1c646a3eba469b25824d1081946, type: 3}
 --- !u!54 &-6739063711577931121
 Rigidbody:
   m_ObjectHideFlags: 0
