@@ -20,7 +20,7 @@ public class Hole : MonoBehaviour
     private WaterLevel _waterLevel;
     private float overlapSphereRadius = 1f;
 
-    private void Awake()
+    private void Start()
     {
         _waterLevel = FindObjectOfType<WaterLevel>();
 
