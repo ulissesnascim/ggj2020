@@ -88,7 +88,6 @@ public class PlayerGrab : MonoBehaviour
         grabbedItemRigidbody.isKinematic = false;
         grabbedItemRigidbody.useGravity = true;
 
-        //grabbedItem.ActivateGravity(10f);
         grabbedItem.transform.SetParent(null);
 
         grabbedItem = null;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8654930253851371173}
   - component: {fileID: 3714481044205354888}
   - component: {fileID: 5905269194783619136}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 5373325140154179167}
 --- !u!135 &5905269194783619136
@@ -105,7 +105,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 2
   m_Center: {x: 0, y: -0.50000006, z: 0}
 --- !u!1 &4878920239738995476
 GameObject:
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 7826118208724076589}
   - component: {fileID: 7220499473146712876}
   - component: {fileID: 8954660556263411820}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cogumelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

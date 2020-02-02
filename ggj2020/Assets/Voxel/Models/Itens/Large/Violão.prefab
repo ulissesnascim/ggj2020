@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5032193176639118452}
   - component: {fileID: 9198152514859524385}
   - component: {fileID: 5813268515800471596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: "Viol\xE3o"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 391443086645180059}
   - component: {fileID: 6918435759037187094}
   - component: {fileID: 1896363181729139198}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 1546077560272510192}
 --- !u!135 &1896363181729139198
@@ -166,7 +166,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 2
   m_Center: {x: 0.14999999, y: -0.050000012, z: 0}
 --- !u!43 &1546077560272510192
 Mesh:

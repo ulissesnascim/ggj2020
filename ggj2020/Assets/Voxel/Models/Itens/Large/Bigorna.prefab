@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2709435949933422432}
   - component: {fileID: 4484153182550135991}
   - component: {fileID: 2659045287968488779}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bigorna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 6174741405392535257}
   - component: {fileID: 5783778084460019335}
   - component: {fileID: 2581001522841374826}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: -1559409594960964207}
 --- !u!135 &2581001522841374826
@@ -166,7 +166,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.2
+  m_Radius: 2
   m_Center: {x: -0.14999998, y: -0.7, z: 0}
 --- !u!43 &-1559409594960964207
 Mesh:

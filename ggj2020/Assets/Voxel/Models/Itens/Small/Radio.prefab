@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 170203208353567971}
   - component: {fileID: -5845175339004344071}
   - component: {fileID: 6607252451413100250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 6000654705226108806}
   - component: {fileID: 7534479169437441048}
   - component: {fileID: 1825492268941633686}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 2620285628800409633}
 --- !u!135 &1825492268941633686
@@ -166,7 +166,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.0000005
+  m_Radius: 2
   m_Center: {x: 0.04999976, y: 0.00000056920476, z: -0.049999177}
 --- !u!28 &1006603005884170109
 Texture2D:

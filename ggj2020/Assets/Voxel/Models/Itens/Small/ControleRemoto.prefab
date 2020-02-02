@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6480733783022232936}
   - component: {fileID: 2144745711211517783}
   - component: {fileID: 3238996965738281827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 5239564745985931024}
 --- !u!135 &3238996965738281827
@@ -105,7 +105,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.90000004
+  m_Radius: 2
   m_Center: {x: -0.00000008568168, y: -0.14999992, z: -0.1}
 --- !u!1 &8795622352039853189
 GameObject:
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 5133235840134544447}
   - component: {fileID: 6548317423171528673}
   - component: {fileID: 925314326371261894}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ControleRemoto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
