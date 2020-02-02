@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class WaterLevel : MonoBehaviour
 {
-    public float CurrentWaterLevel;
+    [HideInInspector] public float CurrentWaterLevel;
     public float MaximumWaterHeight = 0.75f;
+    public float MaximumWaterLevel = 10f;
 
     // Variaveis de controle interno
-    private float _maximumWaterLevel = 10f;
     private float _waterGrowthRate;
 
     private void Start()
     {
-        _waterGrowthRate = MaximumWaterHeight / _maximumWaterLevel;
+        CurrentWaterLevel = 0;
+        _waterGrowthRate = MaximumWaterHeight / MaximumWaterLevel;
     }
 
     private void Update()
     {
-        if (CurrentWaterLevel < _maximumWaterLevel)
+        if (CurrentWaterLevel < MaximumWaterLevel)
             transform.position = new Vector3(transform.position.x, CurrentWaterLevel * _waterGrowthRate, transform.position.z);
         else
             Debug.Log("Voce perdeu");        

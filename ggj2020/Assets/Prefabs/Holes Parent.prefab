@@ -116,9 +116,9 @@ MonoBehaviour:
   - {fileID: 3316434693610227766, guid: 4739c2a92fa1ec547b27d76e4afbe811, type: 3}
   - {fileID: 6628485407213773527, guid: 9da93d6353e4d674baf7f9d3e75f6463, type: 3}
   - {fileID: 1505971379043166052, guid: ec57a69db93e62c4d939b98106759ed0, type: 3}
-  TimeToCreateFirstHole: 3
-  MinimumTimeToCreateNewHole: 2
-  MaximumTimeToCreateNewHole: 5
+  TimeToCreateFirstHole: 4
+  MinimumTimeToCreateNewHole: 5
+  MaximumTimeToCreateNewHole: 10
 --- !u!1 &5499070846881828011
 GameObject:
   m_ObjectHideFlags: 0

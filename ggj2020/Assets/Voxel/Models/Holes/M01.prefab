@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8660848678392275793}
   - component: {fileID: 6628485407213773527}
+  - component: {fileID: 1621809908131313868}
   m_Layer: 0
   m_Name: M01
   m_TagString: Untagged
@@ -126,6 +127,19 @@ MonoBehaviour:
   SmallFlowRate: 0.25
   MediumFlowRate: 0.5
   LargeFlowRate: 0.75
+--- !u!135 &1621809908131313868
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7816368454780829616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &-7775485971301564896
 Mesh:
   m_ObjectHideFlags: 0

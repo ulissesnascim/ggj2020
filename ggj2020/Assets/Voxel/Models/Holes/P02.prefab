@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7701514551059808040}
   - component: {fileID: 1505971379043166052}
+  - component: {fileID: -1581063564973950511}
   m_Layer: 0
   m_Name: P02
   m_TagString: Untagged
@@ -126,6 +127,19 @@ MonoBehaviour:
   SmallFlowRate: 0.1
   MediumFlowRate: 0.25
   LargeFlowRate: 0.4
+--- !u!135 &-1581063564973950511
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5037278701800427117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!28 &-7849783852156349029
 Texture2D:
   m_ObjectHideFlags: 0

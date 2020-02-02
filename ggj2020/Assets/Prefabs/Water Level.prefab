@@ -93,3 +93,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentWaterLevel: 0
   MaximumWaterHeight: 0.75
+  MaximumWaterLevel: 100
