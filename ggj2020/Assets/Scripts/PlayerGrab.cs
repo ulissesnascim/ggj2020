@@ -73,7 +73,7 @@ public class PlayerGrab : MonoBehaviour
             {
                 GrabItem(itemReadyToGrab);
             }
-            else if (grabbedItem)
+            else if (grabbedItem && holeReadyToClose)
             {
                 CloseHoleWithGrabbedItem(holeReadyToClose);
             }
