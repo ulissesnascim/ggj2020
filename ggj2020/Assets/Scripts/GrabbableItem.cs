@@ -32,7 +32,6 @@ public class GrabbableItem : MonoBehaviour
 
             if (timer > timeDiscardedBeforeDestroy)
             {
-                Debug.Log("destruiu");
                 Destroy(gameObject);
             }
         }
