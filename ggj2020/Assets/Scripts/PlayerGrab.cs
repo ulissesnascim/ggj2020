@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerGrab : MonoBehaviour
 {
@@ -33,11 +34,16 @@ public class PlayerGrab : MonoBehaviour
 
     public BucketBehaviour bucket;
 
+    public ArmBehaviour arm;
+
+    FirstPersonController firstPersonController;
+
     // Start is called before the first frame update
     void Start()
     {
         InitPlayerConfiguration();
         layersToIgnoreWhenRaycasting = LayerMask.GetMask("BoatInvisibleWalls", "Player");
+        firstPersonController = GetComponent<FirstPersonController>();
 
     }
 
@@ -83,47 +89,6 @@ public class PlayerGrab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
-
-        Debug.DrawRay(ray.origin, ray.direction * 100);
-        LayerMask layerMask = ~layersToIgnoreWhenRaycasting;
-
-        bool allConditionsMetAux = false;
-
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, layerMask))
-        {
-            if (raycastHit.rigidbody)
-            {
-                GrabbableItem grabbableItem = raycastHit.rigidbody.gameObject.GetComponent<GrabbableItem>();
-
-                if (grabbableItem && !grabbedItem)
-                {
-                    if (!(grabbableItem.itemState == GrabbableItem.GrabbableItemState.ClosingHole))
-                    {
-                        itemReadyToGrab = raycastHit.rigidbody.gameObject;
-                        allConditionsMetAux = true;
-                    }
-                }
-            }
-
-            Hole hole = raycastHit.collider.GetComponent<Hole>();
-
-            if (grabbedItem && hole)
-            {
-                if ((int)grabbedItem.itemSize <= (int)hole.holeSize)
-                {
-                    holeReadyToClose = hole;
-
-                }
-            }
-        }
-
-        if (!allConditionsMetAux)
-        {
-            itemReadyToGrab = null;
-        }*/
-
         if (Input.GetKeyDown(interactionKey))
         {
             if(bucketReady)
@@ -178,7 +143,6 @@ public class PlayerGrab : MonoBehaviour
         {
             UnreadyBucket();
         }
-
     }
 
     private void ReadyBucket()
@@ -196,11 +160,19 @@ public class PlayerGrab : MonoBehaviour
     private void StartCoveringHole()
     {
         isCoveringHole = true;
+
+        holeReadyToClose.CoverHole();
+
+        firstPersonController.CanMove = false;
+
+        arm.Show();
     }
 
     private void UncoverHole()
     {
-
+        isCoveringHole = false;
+        holeReadyToClose.UncoverHole();
+        arm.Hide();
     }
 
     private void CloseHoleWithGrabbedItem(Hole hole)

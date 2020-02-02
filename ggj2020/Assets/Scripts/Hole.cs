@@ -17,13 +17,10 @@ public class Hole : MonoBehaviour
     private float _flowRate;
     private float _totalWaterFlow = 0;
     private bool _isOpen = true;
-    private WaterLevel _waterLevel;
     private float overlapSphereRadius = 1f;
 
     private void Start()
     {
-        _waterLevel = FindObjectOfType<WaterLevel>();
-
         SetHoleFlowRate();
     }
 
@@ -51,9 +48,17 @@ public class Hole : MonoBehaviour
                 }
 
             }
-
-
         }
+    }
+
+    public void CoverHole()
+    {
+        _isOpen = false;
+    }
+
+    public void UncoverHole()
+    {
+        _isOpen = true;
     }
 
     private void Update()
