@@ -10,6 +10,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
+        [SerializeField] CurrentPlayer currentPlayer;
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -42,6 +43,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        private enum CurrentPlayer { Player01, Player02 };
+        private float horizontal;
+        private float vertical;
 
         // Use this for initialization
         private void Start()
@@ -203,10 +207,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         private void GetInput(out float speed)
-        {
+        {          
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            if (currentPlayer == CurrentPlayer.Player01) 
+            { 
+                horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+                vertical = CrossPlatformInputManager.GetAxis("Vertical");         
+            }
+            else if (currentPlayer == CurrentPlayer.Player02) 
+            {
+                horizontal = CrossPlatformInputManager.GetAxis("Horizontal2");
+                vertical = CrossPlatformInputManager.GetAxis("Vertical2");
+            }
 
             bool waswalking = m_IsWalking;
 

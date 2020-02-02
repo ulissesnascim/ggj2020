@@ -1,17 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerGrab : MonoBehaviour
 {
-    private enum RaycastHitType { Hole, Object, None};
+    public enum PlayerType { Player01, Player02 };
+    [Header("Current Player")]
+    public PlayerType currentPlayer;
 
+    private enum RaycastHitType { Hole, Object, None };
+
+    [Space(5f)]
     [SerializeField] private float timeToDestroyAfterDiscarded = 0;
     [SerializeField] private Transform grabbedItemTransformParent = null;
-    [SerializeField] private KeyCode grabButtonMouse = KeyCode.A;
-    [SerializeField] private KeyCode discardButtonMouse = KeyCode.A;
-    [SerializeField] private KeyCode grabButtonGamepad = KeyCode.A;
-    [SerializeField] private KeyCode discardButtonGamepad = KeyCode.A;
+
+    [Header("Player Inputs")]
+    public KeyCode interactionKey;
+    public KeyCode discardKey;
+    public KeyCode bucketKey;
 
     private LayerMask layersToIgnoreWhenRaycasting;
 
@@ -20,17 +27,31 @@ public class PlayerGrab : MonoBehaviour
     private GrabbableItem grabbedItem;
 
     private bool isCoveringHole;
+    private Vector3 _positionToSpawnRaycast;
 
     // Start is called before the first frame update
     void Start()
     {
+        InitPlayerConfiguration();
         layersToIgnoreWhenRaycasting = LayerMask.GetMask("BoatInvisibleWalls", "Player");
 
     }
 
+    private void InitPlayerConfiguration()
+    {
+        if (currentPlayer == PlayerType.Player01)
+        {
+            _positionToSpawnRaycast = new Vector3(Screen.width / 4, Screen.height / 4);
+        }
+        else
+        {
+            _positionToSpawnRaycast = new Vector3(Screen.width / 4, Screen.height / 4) * -1;
+        }
+    }
+
     private RaycastHitType CastRayCast()
     {
-        Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        Ray ray = Camera.main.ScreenPointToRay(_positionToSpawnRaycast);
         Debug.DrawRay(ray.origin, ray.direction * 100);
         LayerMask layerMask = ~layersToIgnoreWhenRaycasting;
 
@@ -99,7 +120,7 @@ public class PlayerGrab : MonoBehaviour
             itemReadyToGrab = null;
         }*/
 
-        if (Input.GetKeyDown(grabButtonMouse) || Input.GetKeyDown(grabButtonGamepad))
+        if (Input.GetKeyDown(interactionKey))
         {
             RaycastHitType hitType = CastRayCast();
 
@@ -110,7 +131,7 @@ public class PlayerGrab : MonoBehaviour
             }
             else if (hitType == RaycastHitType.Hole)
             {
-                if(grabbedItem)
+                if (grabbedItem)
                 {
                     CloseHoleWithGrabbedItem(holeReadyToClose);
                 }
@@ -122,15 +143,15 @@ public class PlayerGrab : MonoBehaviour
 
         }
 
-        if (Input.GetKeyUp(grabButtonMouse) || Input.GetKeyUp(grabButtonGamepad))
+        if (Input.GetKeyUp(interactionKey))
         {
-            if(isCoveringHole)
+            if (isCoveringHole)
             {
                 UncoverHole();
             }
         }
 
-        if (Input.GetKeyDown(discardButtonMouse) || Input.GetKeyDown(discardButtonGamepad))
+        if (Input.GetKeyDown(discardKey))
         {
             if (grabbedItem)
             {
@@ -176,7 +197,7 @@ public class PlayerGrab : MonoBehaviour
     private void DiscardItem()
     {
         grabbedItem.ItemDiscarded(timeToDestroyAfterDiscarded);
-        
+
         grabbedItem.transform.SetParent(null);
 
         grabbedItem = null;
