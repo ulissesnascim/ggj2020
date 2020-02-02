@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8881981651585663895}
   m_Layer: 10
   m_Name: Model 0
-  m_TagString: Untagged
+  m_TagString: GrabableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4666568168906712859}
   m_Layer: 10
   m_Name: SilverTape
-  m_TagString: Untagged
+  m_TagString: GrabableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8729d87b186618e4190c6c6beaebdeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSize: 0
+  itemState: 0
 --- !u!28 &-5418505601076149502
 Texture2D:
   m_ObjectHideFlags: 0

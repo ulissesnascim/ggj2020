@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerGrab : MonoBehaviour
 {
+    private enum RaycastHitType { Hole, Object, None};
+
     [SerializeField] private float timeToDestroyAfterDiscarded = 0;
     [SerializeField] private Transform grabbedItemTransformParent = null;
     [SerializeField] private KeyCode grabButtonMouse = KeyCode.A;
@@ -17,6 +19,8 @@ public class PlayerGrab : MonoBehaviour
     private Hole holeReadyToClose;
     private GrabbableItem grabbedItem;
 
+    private bool isCoveringHole;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +28,37 @@ public class PlayerGrab : MonoBehaviour
 
     }
 
+    private RaycastHitType CastRayCast()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        Debug.DrawRay(ray.origin, ray.direction * 100);
+        LayerMask layerMask = ~layersToIgnoreWhenRaycasting;
+
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, layerMask))
+        {
+            if (raycastHit.collider)
+            {
+                if (raycastHit.transform.tag == "GrabableObject")
+                {
+                    itemReadyToGrab = raycastHit.rigidbody.gameObject;
+                    return RaycastHitType.Object;
+                }
+
+                if (raycastHit.transform.tag == "Hole")
+                {
+                    holeReadyToClose = raycastHit.collider.GetComponent<Hole>();
+                    return RaycastHitType.Hole;
+                }
+            }
+        }
+
+        return RaycastHitType.None;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        /*
         Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
 
         Debug.DrawRay(ray.origin, ray.direction * 100);
@@ -65,19 +97,37 @@ public class PlayerGrab : MonoBehaviour
         if (!allConditionsMetAux)
         {
             itemReadyToGrab = null;
-        }
+        }*/
 
         if (Input.GetKeyDown(grabButtonMouse) || Input.GetKeyDown(grabButtonGamepad))
         {
-            if (itemReadyToGrab)
+            RaycastHitType hitType = CastRayCast();
+
+            print(hitType);
+            if (!grabbedItem && hitType == RaycastHitType.Object)
             {
                 GrabItem(itemReadyToGrab);
             }
-            else if (grabbedItem && holeReadyToClose)
+            else if (hitType == RaycastHitType.Hole)
             {
-                CloseHoleWithGrabbedItem(holeReadyToClose);
+                if(grabbedItem)
+                {
+                    CloseHoleWithGrabbedItem(holeReadyToClose);
+                }
+                else
+                {
+                    StartCoveringHole();
+                }
             }
 
+        }
+
+        if (Input.GetKeyUp(grabButtonMouse) || Input.GetKeyUp(grabButtonGamepad))
+        {
+            if(isCoveringHole)
+            {
+                UncoverHole();
+            }
         }
 
         if (Input.GetKeyDown(discardButtonMouse) || Input.GetKeyDown(discardButtonGamepad))
@@ -89,6 +139,16 @@ public class PlayerGrab : MonoBehaviour
             }
         }
 
+
+    }
+
+    private void StartCoveringHole()
+    {
+        isCoveringHole = true;
+    }
+
+    private void UncoverHole()
+    {
 
     }
 

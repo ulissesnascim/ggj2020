@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5882481832123278839}
   m_Layer: 10
   m_Name: Galinha
-  m_TagString: Untagged
+  m_TagString: GrabableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 5965987895139344224}
   m_Layer: 10
   m_Name: Model 0
-  m_TagString: Untagged
+  m_TagString: GrabableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
