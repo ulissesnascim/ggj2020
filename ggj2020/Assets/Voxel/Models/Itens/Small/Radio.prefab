@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6607252451413100250}
   m_Layer: 10
   m_Name: Radio
-  m_TagString: Untagged
+  m_TagString: GrabableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,6 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8729d87b186618e4190c6c6beaebdeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSize: 0
+  itemState: 0
 --- !u!1 &7723962239861130560
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,7 +78,7 @@ GameObject:
   - component: {fileID: 1825492268941633686}
   m_Layer: 10
   m_Name: Model 0
-  m_TagString: Untagged
+  m_TagString: GrabableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

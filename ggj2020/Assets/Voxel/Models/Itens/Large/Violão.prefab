@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5813268515800471596}
   m_Layer: 10
   m_Name: "Viol\xE3o"
-  m_TagString: Untagged
+  m_TagString: GrabableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 1896363181729139198}
   m_Layer: 10
   m_Name: Model 0
-  m_TagString: Untagged
+  m_TagString: GrabableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

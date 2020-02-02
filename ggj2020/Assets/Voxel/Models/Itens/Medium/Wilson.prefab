@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8294567469528363377}
   m_Layer: 10
   m_Name: Model 0
-  m_TagString: Untagged
+  m_TagString: GrabableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 2016619437221993889}
   m_Layer: 10
   m_Name: Wilson
-  m_TagString: Untagged
+  m_TagString: GrabableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
