@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class PlayerGrab : MonoBehaviour
 {
-    [SerializeField] private Transform grabbedItemTransformParent;
-    [SerializeField] private KeyCode grabButtonMouse;
-    [SerializeField] private KeyCode discardButtonMouse;
-    [SerializeField] private KeyCode grabButtonGamepad;
-    [SerializeField] private KeyCode discardButtonGamepad;
+    [SerializeField] private float timeToDestroyAfterDiscarded = 0;
+    [SerializeField] private Transform grabbedItemTransformParent = null;
+    [SerializeField] private KeyCode grabButtonMouse = KeyCode.A;
+    [SerializeField] private KeyCode discardButtonMouse = KeyCode.A;
+    [SerializeField] private KeyCode grabButtonGamepad = KeyCode.A;
+    [SerializeField] private KeyCode discardButtonGamepad = KeyCode.A;
 
     private LayerMask layersToIgnoreWhenRaycasting;
 
     private GameObject itemReadyToGrab;
     private GrabbableItem grabbedItem;
-    private Rigidbody grabbedItemRigidbody;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,7 @@ public class PlayerGrab : MonoBehaviour
         {
             if (raycastHit.rigidbody)
             {
-                if (raycastHit.rigidbody.gameObject.GetComponent<GrabbableItem>())
+                if (raycastHit.rigidbody.gameObject.GetComponent<GrabbableItem>() && !grabbedItem)
                 {
                     itemReadyToGrab = raycastHit.rigidbody.gameObject;
                 }
@@ -51,7 +51,6 @@ public class PlayerGrab : MonoBehaviour
             if (itemReadyToGrab)
             {
                 GrabItem(itemReadyToGrab);
-                itemReadyToGrab = null;
             }
             else if (grabbedItem)
             {
@@ -75,19 +74,21 @@ public class PlayerGrab : MonoBehaviour
     private void GrabItem(GameObject item)
     {
         grabbedItem = itemReadyToGrab.GetComponent<GrabbableItem>();
-        grabbedItemRigidbody = grabbedItem.GetComponent<Rigidbody>();
+        grabbedItem.ItemGrabbed();
 
-        itemReadyToGrab.transform.SetParent(grabbedItemTransformParent, true); //tem que dar true senao ele refaz a escala
-        itemReadyToGrab.transform.position = grabbedItemTransformParent.position;
-        itemReadyToGrab.transform.localPosition = Vector3.zero;
-        itemReadyToGrab.transform.localPosition = Vector3.zero;
+        grabbedItem.transform.SetParent(grabbedItemTransformParent, true); //tem que dar true senao ele refaz a escala
+        grabbedItem.transform.position = grabbedItemTransformParent.position;
+        grabbedItem.transform.localPosition = Vector3.zero;
+        grabbedItem.transform.localPosition = Vector3.zero;
+
+        itemReadyToGrab = null;
+
     }
 
     private void DiscardItem()
     {
-        grabbedItemRigidbody.isKinematic = false;
-        grabbedItemRigidbody.useGravity = true;
-
+        grabbedItem.ItemDiscarded(timeToDestroyAfterDiscarded);
+        
         grabbedItem.transform.SetParent(null);
 
         grabbedItem = null;

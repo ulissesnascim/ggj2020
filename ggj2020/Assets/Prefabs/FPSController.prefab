@@ -426,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7233be2ac1f05f0499eeec71cca59f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToDestroyAfterDiscarded: 15
   grabbedItemTransformParent: {fileID: 1986924911470551222}
   grabButtonMouse: 323
   discardButtonMouse: 324

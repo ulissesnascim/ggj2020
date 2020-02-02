@@ -20,7 +20,7 @@ public class WaterLevel : MonoBehaviour
     {
         if (CurrentWaterLevel < _maximumWaterLevel)
             transform.position = new Vector3(transform.position.x, CurrentWaterLevel * _waterGrowthRate, transform.position.z);
-        else
+        /*else
             Debug.Log("Voce perdeu");        
-    }
+    */}
 }

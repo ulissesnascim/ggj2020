@@ -166,7 +166,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.8
   m_Center: {x: -0.10000001, y: -0.05000004, z: -0.000000007450581}
 --- !u!28 &-5915201043198507679
 Texture2D:
