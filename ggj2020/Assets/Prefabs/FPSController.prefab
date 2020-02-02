@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPlayer: 0
   m_IsWalking: 0
   m_WalkSpeed: 5
   m_RunSpeed: 10
@@ -198,6 +199,7 @@ MonoBehaviour:
   m_StickToGroundForce: 100
   m_GravityMultiplier: 2
   m_MouseLook:
+    Player: 0
     XSensitivity: 2
     YSensitivity: 2
     clampVerticalRotation: 1
@@ -302,6 +304,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  m_Camera: {fileID: 6255681915200765530}
+  CanMove: 1
 --- !u!54 &6255681915197366042
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -426,9 +430,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7233be2ac1f05f0499eeec71cca59f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPlayer: 0
   timeToDestroyAfterDiscarded: 15
   grabbedItemTransformParent: {fileID: 1986924911470551222}
-  grabButtonMouse: 323
-  discardButtonMouse: 324
-  grabButtonGamepad: 330
-  discardButtonGamepad: 331
+  interactionKey: 117
+  discardKey: 105
+  bucketKey: 111
+  bucket: {fileID: 0}

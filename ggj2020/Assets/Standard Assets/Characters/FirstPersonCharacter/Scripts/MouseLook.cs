@@ -40,8 +40,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else if (Player == CurrentPlayer.Player02) 
             {
-                /*yRot = CrossPlatformInputManager.GetAxis("Mouse X 02") * XSensitivity;
-                xRot = CrossPlatformInputManager.GetAxis("Mouse Y 02") * YSensitivity;*/
+                yRot = CrossPlatformInputManager.GetAxis("Mouse X 02") * XSensitivity;
+                xRot = CrossPlatformInputManager.GetAxis("Mouse Y 02") * YSensitivity;
             }
            
             m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
