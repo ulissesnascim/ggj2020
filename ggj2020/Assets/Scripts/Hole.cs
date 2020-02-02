@@ -60,8 +60,8 @@ public class Hole : MonoBehaviour
     {
         if (_isOpen)
         {
-            _totalWaterFlow += _flowRate * Time.deltaTime;            
-            _waterLevel.CurrentWaterLevel += _totalWaterFlow * Time.deltaTime;
+            _totalWaterFlow += _flowRate * Time.deltaTime;
+            WaterLevel.instance.AddWater(_totalWaterFlow);
         }
     }
 

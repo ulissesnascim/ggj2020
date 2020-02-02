@@ -29,6 +29,10 @@ public class PlayerGrab : MonoBehaviour
     private bool isCoveringHole;
     private Vector3 _positionToSpawnRaycast;
 
+    private bool bucketReady;
+
+    public BucketBehaviour bucket;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -122,25 +126,32 @@ public class PlayerGrab : MonoBehaviour
 
         if (Input.GetKeyDown(interactionKey))
         {
-            RaycastHitType hitType = CastRayCast();
-
-            print(hitType);
-            if (!grabbedItem && hitType == RaycastHitType.Object)
+            if(bucketReady)
             {
-                GrabItem(itemReadyToGrab);
+                bucket.Interact();
             }
-            else if (hitType == RaycastHitType.Hole)
+            else
             {
-                if (grabbedItem)
+                RaycastHitType hitType = CastRayCast();
+
+                print(hitType);
+                if (!grabbedItem && hitType == RaycastHitType.Object)
                 {
-                    CloseHoleWithGrabbedItem(holeReadyToClose);
+                    GrabItem(itemReadyToGrab);
                 }
-                else
+                else if (hitType == RaycastHitType.Hole)
                 {
-                    StartCoveringHole();
+                    if (grabbedItem)
+                    {
+                        if ((int)grabbedItem.itemSize >= (int)holeReadyToClose.holeSize)
+                            CloseHoleWithGrabbedItem(holeReadyToClose);
+                    }
+                    else
+                    {
+                        StartCoveringHole();
+                    }
                 }
             }
-
         }
 
         if (Input.GetKeyUp(interactionKey))
@@ -156,11 +167,30 @@ public class PlayerGrab : MonoBehaviour
             if (grabbedItem)
             {
                 DiscardItem();
-
             }
         }
 
+        if(Input.GetKeyDown(bucketKey))
+        {
+            ReadyBucket();
+        }
+        else if(Input.GetKeyUp(bucketKey))
+        {
+            UnreadyBucket();
+        }
 
+    }
+
+    private void ReadyBucket()
+    {
+        bucket.gameObject.SetActive(true);
+        bucketReady = true;
+    }
+
+    private void UnreadyBucket()
+    {
+        bucket.gameObject.SetActive(false);
+        bucketReady = true;
     }
 
     private void StartCoveringHole()
