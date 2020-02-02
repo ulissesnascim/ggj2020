@@ -7,6 +7,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [Serializable]
     public class MouseLook
     {
+        public CurrentPlayer Player;
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;
         public bool clampVerticalRotation = true;
@@ -20,6 +21,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
         private bool m_cursorIsLocked = true;
+        private float yRot;
+        private float xRot;
 
         public void Init(Transform character, Transform camera)
         {
@@ -29,10 +32,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         public void LookRotation(Transform character, Transform camera)
-        {
-            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
-
+        {         
+            if (Player == CurrentPlayer.Player01) 
+            {
+                yRot = CrossPlatformInputManager.GetAxis("Mouse X 01") * XSensitivity;
+                xRot = CrossPlatformInputManager.GetAxis("Mouse Y 01") * YSensitivity;
+            }
+            else if (Player == CurrentPlayer.Player02) 
+            {
+                /*yRot = CrossPlatformInputManager.GetAxis("Mouse X 02") * XSensitivity;
+                xRot = CrossPlatformInputManager.GetAxis("Mouse Y 02") * YSensitivity;*/
+            }
+           
             m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
 

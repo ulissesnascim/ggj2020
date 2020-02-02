@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
+    public enum CurrentPlayer { Player01, Player02 };
+
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
@@ -30,7 +32,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        private Camera m_Camera;
+        public Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
         private Vector2 m_Input;
@@ -42,16 +44,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_StepCycle;
         private float m_NextStep;
         private bool m_Jumping;
-        private AudioSource m_AudioSource;
-        private enum CurrentPlayer { Player01, Player02 };
+        private AudioSource m_AudioSource;     
         private float horizontal;
         private float vertical;
+        
+        public bool CanMove = true;
 
         // Use this for initialization
         private void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
-            m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
             m_FovKick.Setup(m_Camera);
             m_HeadBob.Setup(m_Camera, m_StepInterval);
@@ -110,32 +112,35 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
             desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-            m_MoveDir.x = desiredMove.x*speed;
-            m_MoveDir.z = desiredMove.z*speed;
-
-
-            if (m_CharacterController.isGrounded)
+            if (CanMove) 
             {
-                m_MoveDir.y = -m_StickToGroundForce;
+                m_MoveDir.x = desiredMove.x * speed;
+                m_MoveDir.z = desiredMove.z * speed;
 
-                if (m_Jump && JumpEnabled) //CUSTOM
+
+                if (m_CharacterController.isGrounded)
                 {
-                    m_MoveDir.y = m_JumpSpeed;
-                    PlayJumpSound();
-                    m_Jump = false;
-                    m_Jumping = true;
+                    m_MoveDir.y = -m_StickToGroundForce;
+
+                    if (m_Jump && JumpEnabled) //CUSTOM
+                    {
+                        m_MoveDir.y = m_JumpSpeed;
+                        PlayJumpSound();
+                        m_Jump = false;
+                        m_Jumping = true;
+                    }
                 }
-            }
-            else
-            {
-                m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
-            }
-            m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
+                else
+                {
+                    m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+                }
+                m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
 
-            ProgressStepCycle(speed);
-            UpdateCameraPosition(speed);
+                ProgressStepCycle(speed);
+                UpdateCameraPosition(speed);
 
-            m_MouseLook.UpdateCursorLock();
+                m_MouseLook.UpdateCursorLock();
+            }        
         }
 
 
