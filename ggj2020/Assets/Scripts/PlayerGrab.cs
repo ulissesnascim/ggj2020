@@ -16,9 +16,9 @@ public class PlayerGrab : MonoBehaviour
     [SerializeField] private Transform grabbedItemTransformParent = null;
 
     [Header("Player Inputs")]
-    public KeyCode interactionKey;
-    public KeyCode discardKey;
-    public KeyCode bucketKey;
+    public KeyCode interactionKey = KeyCode.U;
+    public KeyCode discardKey = KeyCode.I;
+    public KeyCode bucketKey = KeyCode.O;
 
     private LayerMask layersToIgnoreWhenRaycasting;
 
