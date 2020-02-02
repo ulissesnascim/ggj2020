@@ -31,19 +31,28 @@ public class PlayerGrab : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 100);
         LayerMask layerMask = ~layersToIgnoreWhenRaycasting;
 
+        bool allConditionsMetAux = false;
+
         if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, layerMask))
         {
             if (raycastHit.rigidbody)
             {
-                if (raycastHit.rigidbody.gameObject.GetComponent<GrabbableItem>() && !grabbedItem)
+                GrabbableItem grabbableItem = raycastHit.rigidbody.gameObject.GetComponent<GrabbableItem>();
+
+                if (grabbableItem && !grabbedItem)
                 {
-                    itemReadyToGrab = raycastHit.rigidbody.gameObject;
-                }
-                else
-                {
-                    itemReadyToGrab = null;
+                    if (!(grabbableItem.itemState == GrabbableItem.GrabbableItemState.ClosingHole))
+                    {
+                        itemReadyToGrab = raycastHit.rigidbody.gameObject;
+                        allConditionsMetAux = true;
+                    }
                 }
             }
+        }
+
+        if (!allConditionsMetAux)
+        {
+            itemReadyToGrab = null;
         }
 
         if (Input.GetKeyDown(grabButtonMouse) || Input.GetKeyDown(grabButtonGamepad))

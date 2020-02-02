@@ -5,10 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class GrabbableItem : MonoBehaviour
 {
-    private float timeDiscardedBeforeDestroy = 5f;
+    [SerializeField] private GrabbableItemSize itemSize = GrabbableItemSize.Small;
+    [HideInInspector] public GrabbableItemState itemState = GrabbableItemState.OnPlank;
+
+    private float timeBeforeDestroy = 5f;
     private float timer = 0;
-    private GrabbableItemState itemState = GrabbableItemState.OnPlank;
     private Rigidbody rb;
+    private BoatController boat;
+
+    public enum GrabbableItemSize
+    {
+        Small, Medium, Large
+    }
 
     public enum GrabbableItemState
     {
@@ -21,23 +29,21 @@ public class GrabbableItem : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        boat = FindObjectOfType<BoatController>();
+
     }
 
     private void Update()
     {
-        if (itemState == GrabbableItemState.Discarded)
+        if (itemState == GrabbableItemState.Discarded || itemState == GrabbableItemState.ClosingHole)
         {
             timer += Time.deltaTime;
-            Debug.Log(timer);
 
-            if (timer > timeDiscardedBeforeDestroy)
+            if (timer > timeBeforeDestroy)
             {
                 Destroy(gameObject);
             }
-        }
-        else
-        {
-            timer = 0;
+
         }
 
     }
@@ -48,15 +54,45 @@ public class GrabbableItem : MonoBehaviour
         rb.useGravity = true;
 
         itemState = GrabbableItemState.Discarded;
-        timeDiscardedBeforeDestroy = _timeDiscardedBeforeDestroy;
+        timeBeforeDestroy = _timeDiscardedBeforeDestroy;
 
     }
     
     public void ItemGrabbed()
     {
+        timer = 0;
         rb.isKinematic = true;
 
         itemState = GrabbableItemState.Grabbed;
+
+    }
+
+    public void LockToHole(Hole hole)
+    {
+        timer = 0;
+
+        rb.isKinematic = true;
+        transform.rotation = Quaternion.identity;
+        transform.position = hole.transform.position;
+
+        transform.SetParent(boat.transform, true);
+
+        hole.CloseHole();
+        itemState = GrabbableItemState.ClosingHole;
+    }
+       
+    private void OnTriggerEnter(Collider other)
+    {
+        if (itemState == GrabbableItemState.Discarded)
+        {
+            Hole hole = other.GetComponent<Hole>();
+
+            if (hole)
+            {
+                LockToHole(hole);
+            }
+
+        }
 
     }
 

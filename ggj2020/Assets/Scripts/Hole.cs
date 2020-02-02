@@ -17,11 +17,41 @@ public class Hole : MonoBehaviour
     private float _totalWaterFlow = 0;
     private bool _isOpen = true;
     private WaterLevel _waterLevel;
+    private float overlapSphereRadius = 1f;
 
     private void Awake()
     {
         _waterLevel = FindObjectOfType<WaterLevel>();
+
         SetHoleFlowRate();
+    }
+
+    private void FixedUpdate()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, overlapSphereRadius);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            Rigidbody rbAttached = colliders[i].attachedRigidbody;
+            
+            if (rbAttached)
+            {
+                GrabbableItem grabbableItem = rbAttached.GetComponent<GrabbableItem>();
+
+                if(grabbableItem)
+                {
+                    if (grabbableItem.itemState == GrabbableItem.GrabbableItemState.Discarded)
+                    {
+                        grabbableItem.LockToHole(this);
+
+                    }
+
+                }
+
+            }
+
+
+        }
     }
 
     private void Update()
@@ -54,6 +84,8 @@ public class Hole : MonoBehaviour
     public void CloseHole()
     {
         _isOpen = false;
-        Destroy(gameObject, 2.5f);
+        Destroy(gameObject);
+
+        //Destroy(gameObject, 2.5f);
     }
 }
