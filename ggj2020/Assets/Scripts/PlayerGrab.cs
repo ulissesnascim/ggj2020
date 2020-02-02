@@ -14,6 +14,7 @@ public class PlayerGrab : MonoBehaviour
     private LayerMask layersToIgnoreWhenRaycasting;
 
     private GameObject itemReadyToGrab;
+    private Hole holeReadyToClose;
     private GrabbableItem grabbedItem;
 
     // Start is called before the first frame update
@@ -48,6 +49,17 @@ public class PlayerGrab : MonoBehaviour
                     }
                 }
             }
+
+            Hole hole = raycastHit.collider.GetComponent<Hole>();
+
+            if (grabbedItem && hole)
+            {
+                if ((int)grabbedItem.itemSize <= (int)hole.holeSize)
+                {
+                    holeReadyToClose = hole;
+
+                }
+            }
         }
 
         if (!allConditionsMetAux)
@@ -63,7 +75,7 @@ public class PlayerGrab : MonoBehaviour
             }
             else if (grabbedItem)
             {
-                //tapa buraco
+                CloseHoleWithGrabbedItem(holeReadyToClose);
             }
 
         }
@@ -80,6 +92,13 @@ public class PlayerGrab : MonoBehaviour
 
     }
 
+    private void CloseHoleWithGrabbedItem(Hole hole)
+    {
+        grabbedItem.LockToHole(hole);
+
+        grabbedItem = null;
+    }
+
     private void GrabItem(GameObject item)
     {
         grabbedItem = itemReadyToGrab.GetComponent<GrabbableItem>();
@@ -88,7 +107,7 @@ public class PlayerGrab : MonoBehaviour
         grabbedItem.transform.SetParent(grabbedItemTransformParent, true); //tem que dar true senao ele refaz a escala
         grabbedItem.transform.position = grabbedItemTransformParent.position;
         grabbedItem.transform.localPosition = Vector3.zero;
-        grabbedItem.transform.localPosition = Vector3.zero;
+        grabbedItem.transform.localEulerAngles = Vector3.zero;
 
         itemReadyToGrab = null;
 

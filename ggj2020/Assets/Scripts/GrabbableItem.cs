@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class GrabbableItem : MonoBehaviour
 {
-    [SerializeField] private GrabbableItemSize itemSize = GrabbableItemSize.Small;
+    public GrabbableItemSize itemSize = GrabbableItemSize.Small;
     [HideInInspector] public GrabbableItemState itemState = GrabbableItemState.OnPlank;
 
     private float timeBeforeDestroy = 5f;
@@ -15,6 +15,7 @@ public class GrabbableItem : MonoBehaviour
 
     public enum GrabbableItemSize
     {
+        //NAO MUDAR ORDEM -- USADO COMO CONDIÇÃO PARA LOCKTOHOLE
         Small, Medium, Large
     }
 
@@ -69,6 +70,8 @@ public class GrabbableItem : MonoBehaviour
 
     public void LockToHole(Hole hole)
     {
+        //ativado pelo Hole quando está perto de objeto descartado ou pelo PlayerGrab normalmente
+
         timer = 0;
 
         rb.isKinematic = true;
@@ -80,7 +83,7 @@ public class GrabbableItem : MonoBehaviour
         hole.CloseHole();
         itemState = GrabbableItemState.ClosingHole;
     }
-       
+      /*     
     private void OnTriggerEnter(Collider other)
     {
         if (itemState == GrabbableItemState.Discarded)
@@ -94,6 +97,6 @@ public class GrabbableItem : MonoBehaviour
 
         }
 
-    }
+    }*/
 
 }

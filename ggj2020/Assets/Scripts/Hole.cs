@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Hole : MonoBehaviour
 {
-    public enum HoleSize { Small, Medium, Large };
+    public enum HoleSize { Small, Medium, Large }; //NAO MUDAR ORDEM -- INT USADO COMO CONDIÇÃO PARA LOCKTOHOLE
+
     public HoleSize holeSize;
 
     [Space(3f)]
@@ -40,7 +41,8 @@ public class Hole : MonoBehaviour
 
                 if(grabbableItem)
                 {
-                    if (grabbableItem.itemState == GrabbableItem.GrabbableItemState.Discarded)
+                    if (grabbableItem.itemState == GrabbableItem.GrabbableItemState.Discarded &&
+                        (int) grabbableItem.itemSize <= (int) holeSize)
                     {
                         grabbableItem.LockToHole(this);
 
