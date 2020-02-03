@@ -11,6 +11,8 @@ public class GrabbableItem : MonoBehaviour
     private float timeBeforeDestroy = 5f;
     private float timer = 0;
     private Rigidbody rb;
+    private AudioSource audioSource;
+
     private BoatController boat;
 
     public enum GrabbableItemSize
@@ -31,7 +33,7 @@ public class GrabbableItem : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         boat = FindObjectOfType<BoatController>();
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -71,6 +73,8 @@ public class GrabbableItem : MonoBehaviour
     public void LockToHole(Hole hole)
     {
         //ativado pelo Hole quando está perto de objeto descartado ou pelo PlayerGrab normalmente
+
+        AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
 
         timer = 0;
 
