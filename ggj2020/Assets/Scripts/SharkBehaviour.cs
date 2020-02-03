@@ -8,12 +8,14 @@ public class SharkBehaviour : MonoBehaviour
     public float velocity;
     public Transform VFX;
 
+    private Vector3 startingPosition;
     private int rot = -1;
     private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("ChangeDirection", 6f, 6f);      
+        startingPosition = transform.position;
+        InvokeRepeating("ChangeDirection", 6f, 6f);    
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * velocity * -1;
     }
@@ -23,5 +25,15 @@ public class SharkBehaviour : MonoBehaviour
         rot = rot * -1;
         transform.localEulerAngles = transform.localEulerAngles + new Vector3(0f, 180f * rot, 0f);
         rb.velocity = transform.forward * velocity * -1;
+    }
+
+    private void FinishAnimation()
+    {
+        //called by animation event
+
+        transform.position = startingPosition;
+        gameObject.SetActive(false);
+
+
     }
 }

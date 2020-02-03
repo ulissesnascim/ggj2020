@@ -4,34 +4,109 @@ using UnityEngine;
 
 public class SharkWavesController : MonoBehaviour
 {
-    public List<GameObject> _waves;
-    private WaterLevel _waterLevel;
+    [SerializeField] private AnimationCurve waterLevelToSpawnTime = null;
+    [SerializeField] private float minSpawnTime = 0;
+    [SerializeField] private float maxSpawnTime = 0;
+    [SerializeField] private SharkBehaviour initialShark = null;
+
+    private WaterLevel waterLevel;
+    private SharkBehaviour[] sharks;
+    private float timer = 0;
+    private float timeToSpawnShark = 0;
+    private float sharkTimeCoefficient = 0;
 
     void Start()
     {
-        _waterLevel = FindObjectOfType<WaterLevel>();
+        waterLevel = FindObjectOfType<WaterLevel>();
+        
+        //essa linha nao funciona direito sem os objetos estarem ativos
+        sharks = GetComponentsInChildren<SharkBehaviour>();
 
-        ActivateWave(0);
+        for (int i = 0; i < sharks.Length - 1; i++)
+        {
+            sharks[i].gameObject.SetActive(false);
+
+        }
+
+        SpawnShark(initialShark); //só pro jogador ver ~o perigo logo no inicio
+
+        sharkTimeCoefficient = (maxSpawnTime - minSpawnTime);
     }
 
     void Update()
     {
-        if (_waterLevel.CurrentWaterLevel > _waterLevel.MaximumWaterLevel/3 && _waterLevel.CurrentWaterLevel < (2 * _waterLevel.MaximumWaterLevel) / 3) 
-        {          
-            if (!_waves[1].activeSelf) 
-            { 
-                ActivateWave(1);              
-            }
-        }
-        else if (_waterLevel.CurrentWaterLevel >= (2* _waterLevel.MaximumWaterLevel) / 3) 
+        CalculateSharkTimeToSpawn();
+
+        timer += Time.deltaTime;
+
+        if (timer > timeToSpawnShark)
         {
-            if (!_waves[2].activeSelf)
-                ActivateWave(2);
+            if (!AllSharksActive())
+            {
+                SpawnShark(SelectRandomShark());
+            }
+
+            timer = 0;
+
         }
+
+
     }
 
-    private void ActivateWave(int index) 
+    private bool AllSharksActive()
     {
-        _waves[index].SetActive(true);
+        bool allSharksActive = true;
+
+        for (int i = 0; i < sharks.Length - 1; i++)
+        {
+            if (!sharks[i].gameObject.activeInHierarchy)
+            {
+                allSharksActive = false;
+                break;
+            }
+        }
+
+        return allSharksActive;
+    }
+
+    private void CalculateSharkTimeToSpawn()
+    {
+        float waterLevelPercentile = 1 - waterLevel.CurrentWaterLevel / waterLevel.MaximumWaterLevel;
+        timeToSpawnShark = minSpawnTime + waterLevelToSpawnTime.Evaluate(waterLevelPercentile) * sharkTimeCoefficient;
+        
+    }
+
+    private SharkBehaviour SelectRandomShark()
+    {
+        SharkBehaviour shark = sharks[Random.Range(0, sharks.Length - 1)];
+
+        int whileBreaker = 0;
+        bool stopLoop = false;
+
+        while (!stopLoop)
+        {
+            whileBreaker++;
+
+            shark = sharks[Random.Range(0, sharks.Length - 1)];
+
+            //Debug.Log(shark.gameObject.name + " " + shark.transform.position);
+
+            stopLoop = !shark.gameObject.activeInHierarchy;
+
+            if (whileBreaker > 500)
+            {
+                Debug.LogWarning("Loop infinito! Rever lógica");
+                break;
+            }
+        }
+
+        return shark;
+
+    }
+
+    private void SpawnShark(SharkBehaviour shark) 
+    {
+        shark.gameObject.SetActive(true);
+
     }
 }

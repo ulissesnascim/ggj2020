@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4fd29b15abe33f448dd552a9b80eac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentWaterLevel: 0
   MaximumWaterHeight: 0.8
-  MaximumWaterLevel: 1000
+  MaximumWaterLevel: 20
 --- !u!1001 &5545152253300628830
 PrefabInstance:
   m_ObjectHideFlags: 0
