@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaterLevel : MonoBehaviour
 {
-    private float CurrentWaterLevel = 0f;
+    public float CurrentWaterLevel = 0f;
     public float MaximumWaterHeight = 0.75f;
     public float MaximumWaterLevel;
 
