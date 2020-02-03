@@ -12,6 +12,7 @@ public class WaterLevel : MonoBehaviour
     private float _waterGrowthRate;
     private bool _hasWaterReachedTheMaximunLevel = false;
     private float _initialVerticalPos;
+    //private float debugLevel = 0;
 
     public static WaterLevel instance;
 
@@ -32,15 +33,28 @@ public class WaterLevel : MonoBehaviour
     public void AddWater(float amount)
     {
         CurrentWaterLevel += amount;
+
+        /*if (amount < 0)
+        {
+            Debug.LogWarning("ow");
+        }*/
     }
 
     public void RemoveWater(float amount)
     {
         CurrentWaterLevel -= amount;
+        
+        /*if (amount < 0)
+        {
+            Debug.LogWarning("ow");
+        }*/
     }
 
     private void Update()
     {
+        /*if (debugLevel > CurrentWaterLevel)
+            Debug.LogWarning(debugLevel - CurrentWaterLevel);*/
+        
         if (CurrentWaterLevel < MaximumWaterLevel) 
         { 
             transform.position = new Vector3(transform.position.x, _initialVerticalPos + (CurrentWaterLevel * _waterGrowthRate), transform.position.z);       
@@ -52,5 +66,8 @@ public class WaterLevel : MonoBehaviour
                 _hasWaterReachedTheMaximunLevel = true;
             }
         }
+        
+        //debugLevel = CurrentWaterLevel;
+
     }
 }

@@ -22,10 +22,11 @@ public class SharkWavesController : MonoBehaviour
         //essa linha nao funciona direito sem os objetos estarem ativos
         sharks = GetComponentsInChildren<SharkBehaviour>();
 
-        for (int i = 0; i < sharks.Length - 1; i++)
+        for (int i = 0; i < sharks.Length; i++)
         {
+            Debug.Log(i);
+            Debug.Log(sharks[i].gameObject.name);
             sharks[i].gameObject.SetActive(false);
-
         }
 
         SpawnShark(initialShark); //só pro jogador ver ~o perigo logo no inicio
@@ -57,7 +58,7 @@ public class SharkWavesController : MonoBehaviour
     {
         bool allSharksActive = true;
 
-        for (int i = 0; i < sharks.Length - 1; i++)
+        for (int i = 0; i < sharks.Length; i++)
         {
             if (!sharks[i].gameObject.activeInHierarchy)
             {
@@ -78,7 +79,7 @@ public class SharkWavesController : MonoBehaviour
 
     private SharkBehaviour SelectRandomShark()
     {
-        SharkBehaviour shark = sharks[Random.Range(0, sharks.Length - 1)];
+        SharkBehaviour shark = sharks[Random.Range(0, sharks.Length)];
 
         int whileBreaker = 0;
         bool stopLoop = false;
@@ -87,10 +88,8 @@ public class SharkWavesController : MonoBehaviour
         {
             whileBreaker++;
 
-            shark = sharks[Random.Range(0, sharks.Length - 1)];
-
-            //Debug.Log(shark.gameObject.name + " " + shark.transform.position);
-
+            shark = sharks[Random.Range(0, sharks.Length)];
+            
             stopLoop = !shark.gameObject.activeInHierarchy;
 
             if (whileBreaker > 500)
