@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amout: 0.3
+  buckets: {fileID: 8917543914915209130}
+  bucket1: {fileID: 2709206008518810461}
+  bucket2: {fileID: 8771808996691686097}
 --- !u!1001 &8917543915380129579
 PrefabInstance:
   m_ObjectHideFlags: 0
