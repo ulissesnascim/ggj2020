@@ -126,7 +126,7 @@ public class PlayerGrab : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(bucketKey))
+        if(Input.GetKeyDown(bucketKey) && !grabbedItem)
         {
             ReadyBucket();
         }
@@ -145,7 +145,7 @@ public class PlayerGrab : MonoBehaviour
 
     private void UnreadyBucket()
     {
-        bucket.gameObject.SetActive(false);
+        bucket.DropBucket();
         bucketReady = false;
     }
 
