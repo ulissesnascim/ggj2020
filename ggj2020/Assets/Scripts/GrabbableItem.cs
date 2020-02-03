@@ -12,7 +12,7 @@ public class GrabbableItem : MonoBehaviour
     private float timer = 0;
     private Rigidbody rb;
     private AudioSource audioSource;
-    private float discardForce = 0f;
+    private float discardForce = 17f;
 
     private BoatController boat;
 

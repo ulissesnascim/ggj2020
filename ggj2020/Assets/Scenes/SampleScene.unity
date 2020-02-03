@@ -1534,7 +1534,7 @@ GameObject:
   - component: {fileID: 911095986}
   - component: {fileID: 911095985}
   - component: {fileID: 911095984}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
