@@ -98,6 +98,7 @@ public class PlayerGrab : MonoBehaviour
             }
             else
             {
+                print("meu caralho");
                 RaycastHitType hitType = CastRayCast();
 
                 print(hitType);
@@ -156,7 +157,7 @@ public class PlayerGrab : MonoBehaviour
     private void UnreadyBucket()
     {
         bucket.gameObject.SetActive(false);
-        bucketReady = true;
+        bucketReady = false;
     }
 
     private void StartCoveringHole()
@@ -174,6 +175,7 @@ public class PlayerGrab : MonoBehaviour
     {
         isCoveringHole = false;
         holeReadyToClose.UncoverHole();
+        firstPersonController.CanMove = true;
         arm.Hide();
     }
 

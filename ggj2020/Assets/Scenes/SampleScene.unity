@@ -423,6 +423,11 @@ PrefabInstance:
       propertyPath: m_NormalizedViewPortRect.height
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6255681915208272282, guid: faa622046a421cb448a738fd4ca8a973,
+        type: 3}
+      propertyPath: m_RunSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6818684083152232570, guid: faa622046a421cb448a738fd4ca8a973,
         type: 3}
       propertyPath: interactionKey
@@ -875,6 +880,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_MouseLook.Player
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255681915208272282, guid: faa622046a421cb448a738fd4ca8a973,
+        type: 3}
+      propertyPath: m_RunSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6818684083152232570, guid: faa622046a421cb448a738fd4ca8a973,
         type: 3}
