@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holeSize: 2
+  ParticleSystem: {fileID: 4068712109449304685}
   SmallFlowRate: 0.25
   MediumFlowRate: 0.5
   LargeFlowRate: 0.75
@@ -213,11 +214,22 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 8202651073399319169, guid: 624d6bd8d16e0bd428e4a4a277f87748,
+        type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624d6bd8d16e0bd428e4a4a277f87748, type: 3}
 --- !u!4 &4226293690840401889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8288202290645137165, guid: 624d6bd8d16e0bd428e4a4a277f87748,
+    type: 3}
+  m_PrefabInstance: {fileID: 5306176777184293100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4068712109449304685 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8202651073399319169, guid: 624d6bd8d16e0bd428e4a4a277f87748,
     type: 3}
   m_PrefabInstance: {fileID: 5306176777184293100}
   m_PrefabAsset: {fileID: 0}

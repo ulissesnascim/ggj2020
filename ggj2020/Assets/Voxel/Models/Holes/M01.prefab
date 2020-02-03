@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holeSize: 1
+  ParticleSystem: {fileID: 3885559588260479185}
   SmallFlowRate: 0.25
   MediumFlowRate: 0.5
   LargeFlowRate: 0.75
@@ -213,6 +214,12 @@ PrefabInstance:
 --- !u!4 &3980179835244453213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8288202290645137165, guid: 624d6bd8d16e0bd428e4a4a277f87748,
+    type: 3}
+  m_PrefabInstance: {fileID: 4916220412382177872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3885559588260479185 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8202651073399319169, guid: 624d6bd8d16e0bd428e4a4a277f87748,
     type: 3}
   m_PrefabInstance: {fileID: 4916220412382177872}
   m_PrefabAsset: {fileID: 0}
