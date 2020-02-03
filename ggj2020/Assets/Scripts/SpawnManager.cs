@@ -72,12 +72,18 @@ public class SpawnManager : MonoBehaviour
     private GameObject RandomPlank()
     {
         int index = Random.Range(0, planks.Count);
+        int whileBreaker = 0;
 
         //not allowing repeated plank sizes
-        if (index == _priorIndex)
+        while (index == _priorIndex)
         {
             index = Random.Range(0, planks.Count);
+            whileBreaker++;
 
+            if (whileBreaker > 500)
+            {
+                Debug.LogWarning("Loop infinito! Rever lógica");
+            }
         }
 
         _priorIndex = index;
