@@ -126,7 +126,7 @@ public class PlayerGrab : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(bucketKey) && !grabbedItem)
+        if(Input.GetKeyDown(bucketKey) && !grabbedItem && !isCoveringHole)
         {
             ReadyBucket();
         }
