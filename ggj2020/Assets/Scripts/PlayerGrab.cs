@@ -38,32 +38,22 @@ public class PlayerGrab : MonoBehaviour
 
     FirstPersonController firstPersonController;
 
+    public Camera canera;
+
+    public float holeReachDistance;
+
     // Start is called before the first frame update
     void Start()
     {
-        InitPlayerConfiguration();
         layersToIgnoreWhenRaycasting = LayerMask.GetMask("BoatInvisibleWalls", "Player");
         firstPersonController = GetComponent<FirstPersonController>();
         UnreadyBucket();
     }
 
-    private void InitPlayerConfiguration()
-    {
-        if (currentPlayer == PlayerType.Player01)
-        {
-            _positionToSpawnRaycast = new Vector2(Screen.width / 2, Screen.height / 2);
-        }
-        else
-        {
-            _positionToSpawnRaycast = new Vector2(Screen.width / 2, Screen.height + Screen.height / 2);
-        }
-    }
-
     private RaycastHitType CastRayCast()
     {
-        Ray ray = Camera.main.ScreenPointToRay(_positionToSpawnRaycast);
-        print("PUTA QUE PARIU");
-        Debug.DrawRay(ray.origin, ray.direction * 100);
+        Ray ray = canera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 2);
         LayerMask layerMask = ~layersToIgnoreWhenRaycasting;
 
         if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, layerMask))
@@ -76,7 +66,7 @@ public class PlayerGrab : MonoBehaviour
                     return RaycastHitType.Object;
                 }
 
-                if (raycastHit.transform.tag == "Hole")
+                if (raycastHit.transform.tag == "Hole" && raycastHit.distance <= holeReachDistance)
                 {
                     holeReadyToClose = raycastHit.collider.GetComponent<Hole>();
                     return RaycastHitType.Hole;
@@ -98,7 +88,6 @@ public class PlayerGrab : MonoBehaviour
             }
             else
             {
-                print("meu caralho");
                 RaycastHitType hitType = CastRayCast();
 
                 print(hitType);

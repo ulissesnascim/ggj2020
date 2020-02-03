@@ -255,6 +255,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ff160261d892ad4bb62189d55053072, type: 3}
+--- !u!20 &679280914 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6255681915200765530, guid: faa622046a421cb448a738fd4ca8a973,
+    type: 3}
+  m_PrefabInstance: {fileID: 993081191}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,6 +448,16 @@ PrefabInstance:
         type: 3}
       propertyPath: bucketKey
       value: 304
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818684083152232570, guid: faa622046a421cb448a738fd4ca8a973,
+        type: 3}
+      propertyPath: canera
+      value: 
+      objectReference: {fileID: 1099122821}
+    - target: {fileID: 6818684083152232570, guid: faa622046a421cb448a738fd4ca8a973,
+        type: 3}
+      propertyPath: holeReachDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7759234261098574788, guid: faa622046a421cb448a738fd4ca8a973,
         type: 3}
@@ -891,6 +907,16 @@ PrefabInstance:
       propertyPath: currentPlayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6818684083152232570, guid: faa622046a421cb448a738fd4ca8a973,
+        type: 3}
+      propertyPath: canera
+      value: 
+      objectReference: {fileID: 679280914}
+    - target: {fileID: 6818684083152232570, guid: faa622046a421cb448a738fd4ca8a973,
+        type: 3}
+      propertyPath: holeReachDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6255681915202796664, guid: faa622046a421cb448a738fd4ca8a973,
         type: 3}
       propertyPath: m_TagString
@@ -994,6 +1020,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6255681915194794618, guid: faa622046a421cb448a738fd4ca8a973, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: faa622046a421cb448a738fd4ca8a973, type: 3}
+--- !u!20 &1099122821 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6255681915200765530, guid: faa622046a421cb448a738fd4ca8a973,
+    type: 3}
+  m_PrefabInstance: {fileID: 825164565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1413852492
 PrefabInstance:
   m_ObjectHideFlags: 0
