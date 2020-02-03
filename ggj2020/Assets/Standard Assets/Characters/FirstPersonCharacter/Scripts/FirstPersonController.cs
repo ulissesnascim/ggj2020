@@ -216,13 +216,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // Read input
             if (currentPlayer == CurrentPlayer.Player01) 
             { 
-                horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-                vertical = CrossPlatformInputManager.GetAxis("Vertical");         
+                horizontal = CrossPlatformInputManager.GetAxis("Horizontal Player 01");
+                vertical = CrossPlatformInputManager.GetAxis("Vertical Player 01");         
             }
             else if (currentPlayer == CurrentPlayer.Player02) 
             {
-                horizontal = CrossPlatformInputManager.GetAxis("Horizontal2");
-                vertical = CrossPlatformInputManager.GetAxis("Vertical2");
+                horizontal = CrossPlatformInputManager.GetAxis("Horizontal Player 02");
+                vertical = CrossPlatformInputManager.GetAxis("Vertical Player 02");
             }
 
             bool waswalking = m_IsWalking;
