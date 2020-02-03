@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentWaterLevel: 0
   MaximumWaterHeight: 0.8
-  MaximumWaterLevel: 20
+  MaximumWaterLevel: 10
 --- !u!1001 &5545152253300628830
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1eed8255b18c084f943df4d381509a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holeSize: 0
+  holeSize: 2
   ParticleSystem: {fileID: 4562975897110514442}
   SmallFlowRate: 0.1
   MediumFlowRate: 0.25

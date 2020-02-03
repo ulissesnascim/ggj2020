@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4210035010234862430}
   - component: {fileID: 2175176459773328112}
   - component: {fileID: 3059463904894647024}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model 0
   m_TagString: GrabableObject
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: -3709748528842371250}
   - component: {fileID: 886249659914931763}
   - component: {fileID: -2428249024854096475}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pia
   m_TagString: GrabableObject
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8729d87b186618e4190c6c6beaebdeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSize: 2
+  itemSize: 0
   itemState: 0
 --- !u!82 &-2428249024854096475
 AudioSource:

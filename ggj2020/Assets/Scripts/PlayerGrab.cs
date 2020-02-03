@@ -15,13 +15,14 @@ public class PlayerGrab : MonoBehaviour
     [Space(5f)]
     [SerializeField] private float timeToDestroyAfterDiscarded = 0;
     [SerializeField] private Transform grabbedItemTransformParent = null;
+    [SerializeField] private LayerMask grabbableItemsLayer = 0;
+    [SerializeField] private LayerMask layersToIgnoreWhenRaycasting;
 
     [Header("Player Inputs")]
     public KeyCode interactionKey = KeyCode.U;
     public KeyCode discardKey = KeyCode.I;
     public KeyCode bucketKey = KeyCode.O;
 
-    private LayerMask layersToIgnoreWhenRaycasting;
 
     private GameObject itemReadyToGrab;
     private Hole holeReadyToClose;
@@ -45,7 +46,6 @@ public class PlayerGrab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        layersToIgnoreWhenRaycasting = LayerMask.GetMask("BoatInvisibleWalls", "Player");
         firstPersonController = GetComponent<FirstPersonController>();
         UnreadyBucket();
     }
@@ -80,6 +80,17 @@ public class PlayerGrab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //a boa era fazer um enum e eventos pra isso, mas nao agora
+        if (!grabbedItem)
+        {
+            layersToIgnoreWhenRaycasting = layersToIgnoreWhenRaycasting & ~grabbableItemsLayer;
+        }
+        else
+        {
+            layersToIgnoreWhenRaycasting |= grabbableItemsLayer;
+
+        }
+
         if (Input.GetKeyDown(interactionKey))
         {
             if(bucketReady)
@@ -91,6 +102,7 @@ public class PlayerGrab : MonoBehaviour
                 RaycastHitType hitType = CastRayCast();
 
                 print(hitType);
+
                 if (!grabbedItem && hitType == RaycastHitType.Object)
                 {
                     GrabItem(itemReadyToGrab);
@@ -100,7 +112,10 @@ public class PlayerGrab : MonoBehaviour
                     if (grabbedItem)
                     {
                         if ((int)grabbedItem.itemSize <= (int)holeReadyToClose.holeSize)
+                        {
                             CloseHoleWithGrabbedItem(holeReadyToClose);
+
+                        }
                     }
                     else
                     {

@@ -24,8 +24,6 @@ public class SharkWavesController : MonoBehaviour
 
         for (int i = 0; i < sharks.Length; i++)
         {
-            Debug.Log(i);
-            Debug.Log(sharks[i].gameObject.name);
             sharks[i].gameObject.SetActive(false);
         }
 
