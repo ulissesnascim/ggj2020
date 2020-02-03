@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class SharkBehaviour : MonoBehaviour
 {
-    public int velocity;
+    public float velocity;
     public Transform VFX;
 
     private int direction = 1;
@@ -15,7 +15,7 @@ public class SharkBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("ChangeDirection", 0f, 2.5f);
+        InvokeRepeating("ChangeDirection", 0f, 6f);
         _initialVerticalPos = VFX.position.y;
         rb = GetComponent<Rigidbody>();
     }
