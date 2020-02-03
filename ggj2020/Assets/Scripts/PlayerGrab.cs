@@ -44,24 +44,25 @@ public class PlayerGrab : MonoBehaviour
         InitPlayerConfiguration();
         layersToIgnoreWhenRaycasting = LayerMask.GetMask("BoatInvisibleWalls", "Player");
         firstPersonController = GetComponent<FirstPersonController>();
-
+        UnreadyBucket();
     }
 
     private void InitPlayerConfiguration()
     {
         if (currentPlayer == PlayerType.Player01)
         {
-            _positionToSpawnRaycast = new Vector3(Screen.width / 4, Screen.height / 4);
+            _positionToSpawnRaycast = new Vector2(Screen.width / 2, Screen.height / 2);
         }
         else
         {
-            _positionToSpawnRaycast = new Vector3(Screen.width / 4, Screen.height / 4) * -1;
+            _positionToSpawnRaycast = new Vector2(Screen.width / 2, Screen.height + Screen.height / 2);
         }
     }
 
     private RaycastHitType CastRayCast()
     {
         Ray ray = Camera.main.ScreenPointToRay(_positionToSpawnRaycast);
+        print("PUTA QUE PARIU");
         Debug.DrawRay(ray.origin, ray.direction * 100);
         LayerMask layerMask = ~layersToIgnoreWhenRaycasting;
 
@@ -139,7 +140,8 @@ public class PlayerGrab : MonoBehaviour
         {
             ReadyBucket();
         }
-        else if(Input.GetKeyUp(bucketKey))
+        
+        if(Input.GetKeyUp(bucketKey))
         {
             UnreadyBucket();
         }

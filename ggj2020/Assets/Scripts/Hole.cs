@@ -7,6 +7,7 @@ public class Hole : MonoBehaviour
     public enum HoleSize { Small, Medium, Large }; //NAO MUDAR ORDEM -- INT USADO COMO CONDIÇÃO PARA LOCKTOHOLE
 
     public HoleSize holeSize;
+    public ParticleSystem ParticleSystem;
 
     [Space(3f)]
     [Header("Vazao de cada buraco")]
@@ -18,9 +19,11 @@ public class Hole : MonoBehaviour
     private float _totalWaterFlow = 0;
     private bool _isOpen = true;
     private float overlapSphereRadius = 1f;
+    private ParticleSystem.EmissionModule _emission;
 
     private void Start()
     {
+        _emission = ParticleSystem.emission;
         SetHoleFlowRate();
     }
 
@@ -44,7 +47,6 @@ public class Hole : MonoBehaviour
                         grabbableItem.LockToHole(this);
 
                     }
-
                 }
 
             }
@@ -53,11 +55,13 @@ public class Hole : MonoBehaviour
 
     public void CoverHole()
     {
+        _emission.rateOverTime = 0;
         _isOpen = false;
     }
 
     public void UncoverHole()
     {
+        _emission.rateOverTime = 24f;
         _isOpen = true;
     }
 
