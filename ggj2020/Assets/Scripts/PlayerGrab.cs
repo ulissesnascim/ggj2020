@@ -62,8 +62,12 @@ public class PlayerGrab : MonoBehaviour
             {
                 if (raycastHit.transform.tag == "GrabableObject")
                 {
-                    itemReadyToGrab = raycastHit.rigidbody.gameObject;
-                    return RaycastHitType.Object;
+                    if (raycastHit.transform.gameObject.GetComponent<GrabbableItem>().itemState != GrabbableItem.GrabbableItemState.ClosingHole)
+                    {
+                        itemReadyToGrab = raycastHit.rigidbody.gameObject;
+                        return RaycastHitType.Object;
+                    }
+
                 }
 
                 if (raycastHit.transform.tag == "Hole" && raycastHit.distance <= holeReachDistance)

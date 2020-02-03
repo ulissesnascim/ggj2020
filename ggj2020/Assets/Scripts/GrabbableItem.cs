@@ -12,6 +12,7 @@ public class GrabbableItem : MonoBehaviour
     private float timer = 0;
     private Rigidbody rb;
     private AudioSource audioSource;
+    private float discardForce = 0f;
 
     private BoatController boat;
 
@@ -55,6 +56,7 @@ public class GrabbableItem : MonoBehaviour
     {
         rb.isKinematic = false;
         rb.useGravity = true;
+        rb.AddForce(transform.forward * discardForce, ForceMode.Impulse);
 
         itemState = GrabbableItemState.Discarded;
         timeBeforeDestroy = _timeDiscardedBeforeDestroy;
