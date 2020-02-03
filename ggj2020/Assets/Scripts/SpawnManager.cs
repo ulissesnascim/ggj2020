@@ -16,10 +16,14 @@ public class SpawnManager : MonoBehaviour
     private float _randomSpawnTimeLeft = 0;
     private float _randomSpawnTimeRight = 0;
 
+    private int _priorIndex = 0;
+
     private void Start()
     {
         SetRandomSpawnTimeLeft();
         SetRandomSpawnTimeRight();
+
+        _priorIndex = planks.Count + 1;
     }
 
     private void Update()
@@ -51,7 +55,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnLeft()
     {
-        GameObject plank = Instantiate(RandomGrabbableObject(), leftSpawnPoint.position, Quaternion.identity);
+        GameObject plank = Instantiate(RandomPlank(), leftSpawnPoint.position, Quaternion.identity);
 
         _spawnTimerLeft = 0;
         SetRandomSpawnTimeLeft();
@@ -59,15 +63,31 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnRight()
     {
-        GameObject plank = Instantiate(RandomGrabbableObject(), rightSpawnPoint.position, Quaternion.identity);
+        GameObject plank = Instantiate(RandomPlank(), rightSpawnPoint.position, Quaternion.identity);
 
         _spawnTimerRight = 0;
         SetRandomSpawnTimeRight();
     }
 
-    private GameObject RandomGrabbableObject()
+    private GameObject RandomPlank()
     {
         int index = Random.Range(0, planks.Count);
+        int whileBreaker = 0;
+
+        //not allowing repeated plank sizes
+        while (index == _priorIndex)
+        {
+            index = Random.Range(0, planks.Count);
+            whileBreaker++;
+
+            if (whileBreaker > 500)
+            {
+                Debug.LogWarning("Loop infinito! Rever lógica");
+            }
+        }
+
+        _priorIndex = index;
+
         return planks[index];
     }
 }
