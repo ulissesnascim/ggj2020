@@ -7,6 +7,7 @@ public class GrabbableItem : MonoBehaviour
 {
     public GrabbableItemSize itemSize = GrabbableItemSize.Small;
     [HideInInspector] public GrabbableItemState itemState = GrabbableItemState.OnPlank;
+    [SerializeField] private float offsetYFixWhenLockedToHole = 0.5f;
 
     private float timeBeforeDestroy = 5f;
     private float timer = 0;
@@ -81,10 +82,13 @@ public class GrabbableItem : MonoBehaviour
         timer = 0;
 
         rb.isKinematic = true;
-        transform.rotation = Quaternion.identity;
+        //transform.rotation = Quaternion.identity;
+        transform.localPosition = Vector3.zero;
         transform.position = hole.transform.position;
 
         transform.SetParent(boat.transform, true);
+
+        transform.localPosition = new Vector3(transform.localPosition.x, 0 + offsetYFixWhenLockedToHole, transform.localPosition.z);
 
         hole.CloseHole();
         itemState = GrabbableItemState.ClosingHole;

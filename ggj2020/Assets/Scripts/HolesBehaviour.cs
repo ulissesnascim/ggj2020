@@ -50,6 +50,9 @@ public class HolesBehaviour : MonoBehaviour
             GameObject holeObject = Instantiate(Holes[h].gameObject, _holePositions[p]);
             _numberActiveHoles++;
 
+            AudioSource audioSource = holeObject.GetComponentInParent<AudioSource>();
+            audioSource.PlayOneShot(audioSource.clip);
+
             Hole holeSize = holeObject.GetComponent<Hole>();
             
             currentHoleSizeCounts[h] += 1;

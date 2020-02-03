@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSize: 2
   itemState: 0
+  offsetYFixWhenLockedToHole: -0.18
 --- !u!82 &6652210858219239027
 AudioSource:
   m_ObjectHideFlags: 0
