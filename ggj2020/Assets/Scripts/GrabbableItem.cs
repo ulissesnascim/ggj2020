@@ -18,7 +18,7 @@ public class GrabbableItem : MonoBehaviour
     public enum GrabbableItemSize
     {
         //NAO MUDAR ORDEM -- USADO COMO CONDIÇÃO PARA LOCKTOHOLE
-        Small, Medium, Large
+        Large, Medium, Small
     }
 
     public enum GrabbableItemState

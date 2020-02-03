@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hole : MonoBehaviour
 {
-    public enum HoleSize { Small, Medium, Large }; //NAO MUDAR ORDEM -- INT USADO COMO CONDIÇÃO PARA LOCKTOHOLE
+    public enum HoleSize { Large, Medium, Small }; //NAO MUDAR ORDEM -- INT USADO COMO CONDIÇÃO PARA LOCKTOHOLE
 
     public HoleSize holeSize;
     public ParticleSystem ParticleSystem;
@@ -97,6 +97,7 @@ public class Hole : MonoBehaviour
         _isOpen = false;
         Destroy(gameObject);
 
+        HolesBehaviour.instance.currentHoleSizeCounts[(int) holeSize] -= 1;
         //Destroy(gameObject, 2.5f);
     }
 }

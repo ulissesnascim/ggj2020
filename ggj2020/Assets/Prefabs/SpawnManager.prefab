@@ -84,6 +84,51 @@ MonoBehaviour:
   - {fileID: 7533592479011882951, guid: d9e989ed446e94045a8774f4f577e537, type: 3}
   - {fileID: 7533592479011882951, guid: cfb76497bc99ae04b9b75c304b6a7d1f, type: 3}
   - {fileID: 7533592479011882951, guid: 81f1f6301c7d91444a7c96c4fa7fbdd1, type: 3}
+  probabilityWeightForNumberOfHoles:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.54717
+      outSlope: 2.54717
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05
+    - serializedVersion: 3
+      time: 0.115293756
+      value: 0.2790869
+      inSlope: -0.110448524
+      outSlope: -0.110448524
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.600778
+    - serializedVersion: 3
+      time: 0.58918965
+      value: 0.8812394
+      inSlope: -0.05931185
+      outSlope: -0.05931185
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.030874772
+      outSlope: 0.030874772
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.6875
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxProbabilityWeight: 1
+  plankSizeProbabilityWeights: []
+  plankSizeProbabilities: []
 --- !u!1 &547931987281677390
 GameObject:
   m_ObjectHideFlags: 0

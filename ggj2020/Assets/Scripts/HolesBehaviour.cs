@@ -12,11 +12,24 @@ public class HolesBehaviour : MonoBehaviour
     public int MinimumTimeToCreateNewHole = 2;
     public int MaximumTimeToCreateNewHole = 5;
 
-    private List<Transform> _holePositions = new List<Transform>();
+    [HideInInspector] public List<Transform> _holePositions = new List<Transform>();
+    public int[] currentHoleSizeCounts = new int[]{0,0,0};
+    //public Dictionary<Hole.HoleSize, int> currentHoleSizeCountsDictionary = new Dictionary<Hole.HoleSize, int>();
     private int _numberActiveHoles = 0;
+
+    public static HolesBehaviour instance;
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
         foreach (Transform child in transform)
         {
             _holePositions.Add(child);           
@@ -34,8 +47,13 @@ public class HolesBehaviour : MonoBehaviour
            
         if (_holePositions[p].childCount == 0)
         {
-            GameObject hole = Instantiate(Holes[h].gameObject, _holePositions[p]);
+            GameObject holeObject = Instantiate(Holes[h].gameObject, _holePositions[p]);
             _numberActiveHoles++;
+
+            Hole holeSize = holeObject.GetComponent<Hole>();
+            
+            currentHoleSizeCounts[h] += 1;
+            
         }
         else
         {
