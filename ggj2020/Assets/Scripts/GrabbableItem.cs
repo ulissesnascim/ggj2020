@@ -71,6 +71,9 @@ public class GrabbableItem : MonoBehaviour
 
         itemState = GrabbableItemState.Grabbed;
 
+        transform.localPosition = new Vector3(transform.localPosition.x, 0 + offsetYFixWhenLockedToHole, transform.localPosition.z);
+
+
     }
 
     public void LockToHole(Hole hole)

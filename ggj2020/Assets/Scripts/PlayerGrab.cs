@@ -197,9 +197,11 @@ public class PlayerGrab : MonoBehaviour
     private void GrabItem(GameObject item)
     {
         grabbedItem = itemReadyToGrab.GetComponent<GrabbableItem>();
-        grabbedItem.ItemGrabbed();
 
         grabbedItem.transform.SetParent(grabbedItemTransformParent, true); //tem que dar true senao ele refaz a escala
+
+        grabbedItem.ItemGrabbed(); //tem que ser feito após o parenting
+
         grabbedItem.transform.position = grabbedItemTransformParent.position;
         grabbedItem.transform.localPosition = Vector3.zero;
         grabbedItem.transform.localEulerAngles = Vector3.zero;
