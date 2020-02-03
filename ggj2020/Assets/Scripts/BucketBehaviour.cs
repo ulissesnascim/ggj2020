@@ -10,9 +10,17 @@ public class BucketBehaviour : MonoBehaviour
 
     public float amout;
 
+    public Transform buckets;
+    public Transform bucket1;
+    public Transform bucket2;
+
     private void OnEnable()
     {
+        buckets.localPosition = Vector3.zero;
+        bucket1.localPosition = Vector3.zero;
+        bucket2.localPosition = Vector3.zero;
         isEmpty = true;
+        anim.Play("BucketEmpty");
     }
 
     private void OnDisable()
@@ -24,7 +32,7 @@ public class BucketBehaviour : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         anim = GetComponent<Animator>();
     }

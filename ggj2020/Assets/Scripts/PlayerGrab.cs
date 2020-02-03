@@ -38,31 +38,22 @@ public class PlayerGrab : MonoBehaviour
 
     FirstPersonController firstPersonController;
 
+    public Camera canera;
+
+    public float holeReachDistance;
+
     // Start is called before the first frame update
     void Start()
     {
-        InitPlayerConfiguration();
         layersToIgnoreWhenRaycasting = LayerMask.GetMask("BoatInvisibleWalls", "Player");
         firstPersonController = GetComponent<FirstPersonController>();
-
-    }
-
-    private void InitPlayerConfiguration()
-    {
-        if (currentPlayer == PlayerType.Player01)
-        {
-            _positionToSpawnRaycast = new Vector3(Screen.width / 4, Screen.height / 4);
-        }
-        else
-        {
-            _positionToSpawnRaycast = new Vector3(Screen.width / 4, Screen.height / 4) * -1;
-        }
+        UnreadyBucket();
     }
 
     private RaycastHitType CastRayCast()
     {
-        Ray ray = Camera.main.ScreenPointToRay(_positionToSpawnRaycast);
-        Debug.DrawRay(ray.origin, ray.direction * 100);
+        Ray ray = canera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 2);
         LayerMask layerMask = ~layersToIgnoreWhenRaycasting;
 
         if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, layerMask))
@@ -75,7 +66,7 @@ public class PlayerGrab : MonoBehaviour
                     return RaycastHitType.Object;
                 }
 
-                if (raycastHit.transform.tag == "Hole")
+                if (raycastHit.transform.tag == "Hole" && raycastHit.distance <= holeReachDistance)
                 {
                     holeReadyToClose = raycastHit.collider.GetComponent<Hole>();
                     return RaycastHitType.Hole;
@@ -139,7 +130,8 @@ public class PlayerGrab : MonoBehaviour
         {
             ReadyBucket();
         }
-        else if(Input.GetKeyUp(bucketKey))
+        
+        if(Input.GetKeyUp(bucketKey))
         {
             UnreadyBucket();
         }
@@ -154,7 +146,7 @@ public class PlayerGrab : MonoBehaviour
     private void UnreadyBucket()
     {
         bucket.gameObject.SetActive(false);
-        bucketReady = true;
+        bucketReady = false;
     }
 
     private void StartCoveringHole()
@@ -172,6 +164,7 @@ public class PlayerGrab : MonoBehaviour
     {
         isCoveringHole = false;
         holeReadyToClose.UncoverHole();
+        firstPersonController.CanMove = true;
         arm.Hide();
     }
 
