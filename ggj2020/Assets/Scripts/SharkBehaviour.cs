@@ -1,22 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SharkBehaviour : MonoBehaviour
 {
-    Rigidbody rigidbody;
-
     public int velocity;
+    public Transform VFX;
+
+    private int direction = 1;
+    private float _initialVerticalPos;
+    private Rigidbody rb;
+    private Sequence _sequence;
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = transform.forward * velocity * -1;
+        InvokeRepeating("ChangeDirection", 0f, 2.5f);
+        _initialVerticalPos = VFX.position.y;
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ChangeDirection() 
     {
-        
+        direction = direction * -1;
+        rb.velocity = transform.forward * velocity * direction;
     }
 }
