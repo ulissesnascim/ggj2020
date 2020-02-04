@@ -102,11 +102,14 @@ public class GrabbableItem : MonoBehaviour
     public void TearLargerHole(Hole hole)
     {
         AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
-
-        HolesBehaviour.instance.ReplaceHole(hole, (int) hole.holeSize);
-
         Destroy(gameObject);
 
+        if (hole.holeSize != Hole.HoleSize.Large)
+        {
+
+            HolesBehaviour.instance.ReplaceHole(hole, (int)hole.holeSize);
+
+        }
     }
 
       /*     

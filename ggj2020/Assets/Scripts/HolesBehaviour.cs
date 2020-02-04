@@ -14,7 +14,6 @@ public class HolesBehaviour : MonoBehaviour
 
     public List<Transform> _holePositions = new List<Transform>();
     public int[] currentHoleSizeCounts = new int[]{0,0,0};
-    //public Dictionary<Hole.HoleSize, int> currentHoleSizeCountsDictionary = new Dictionary<Hole.HoleSize, int>();
     private int _numberActiveHoles = 0;
 
     public static HolesBehaviour instance;
@@ -41,7 +40,6 @@ public class HolesBehaviour : MonoBehaviour
 
     private IEnumerator CreateHoleRoutine(float time)
     {
-        Debug.Log("create hole " + _holePositions.Count);
         yield return new WaitForSeconds(time);
 
         int p = Random.Range(0, _holePositions.Count);
@@ -49,7 +47,6 @@ public class HolesBehaviour : MonoBehaviour
            
         if (_holePositions[p].childCount == 0)
         {
-            Debug.Log("true " + _holePositions.Count);
             CreateHole(h, _holePositions[p]);
         }
         else
@@ -57,8 +54,6 @@ public class HolesBehaviour : MonoBehaviour
             StartCoroutine(CreateHoleRoutine(0f));
             yield break;
         }
-
-        Debug.Log("antes do segundo if " + _holePositions.Count);
 
         if (_numberActiveHoles < _holePositions.Count)
         {
@@ -69,6 +64,7 @@ public class HolesBehaviour : MonoBehaviour
 
     private void CreateHole(int holeIndex, Transform holePosition)
     {
+        Debug.Log(holeIndex + " " + Holes[holeIndex].gameObject);
         GameObject holeObject = Instantiate(Holes[holeIndex].gameObject, holePosition);
 
         AudioSource audioSource = holeObject.GetComponentInParent<AudioSource>();
@@ -82,11 +78,13 @@ public class HolesBehaviour : MonoBehaviour
 
     public void ReplaceHole(Hole holeToReplace, int holeSizeIndex)
     {
+        Debug.Log("replace " + holeSizeIndex);
+
         Transform holePosition = holeToReplace.transform.parent;
 
         Destroy(holeToReplace.gameObject);
 
-        CreateHole(holeSizeIndex--, holePosition);
+        CreateHole(holeSizeIndex - 1, holePosition);
 
     }
 

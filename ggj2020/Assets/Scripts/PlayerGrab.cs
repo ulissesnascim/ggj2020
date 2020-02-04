@@ -199,12 +199,8 @@ public class PlayerGrab : MonoBehaviour
         }
         else
         {
-            if (hole.holeSize != Hole.HoleSize.Large)
-            {
-                grabbedItem.TearLargerHole(hole);
-
-            }
-
+            grabbedItem.TearLargerHole(hole);
+            
         }
 
         grabbedItem = null;

@@ -54,12 +54,7 @@ public class Hole : MonoBehaviour
                         }
                         else
                         {
-                            if (holeSize != HoleSize.Large)
-                            {
-                                grabbableItem.TearLargerHole(this);
-
-                            }
-
+                            grabbableItem.TearLargerHole(this);
                         }
 
                     }
