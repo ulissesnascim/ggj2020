@@ -193,16 +193,17 @@ public class PlayerGrab : MonoBehaviour
             if ((int)grabbedItem.itemSize <= (int)hole.holeSize)
             {
                 grabbedItem.LockToHole(hole);
+                grabbedItem = null;
 
             }
         }
         else
         {
             grabbedItem.TearLargerHole(hole);
-            
+            grabbedItem = null;
+
         }
 
-        grabbedItem = null;
     }
 
     private void GrabItem(GameObject item)
