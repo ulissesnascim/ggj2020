@@ -11,11 +11,11 @@ public class SharkBehaviour : MonoBehaviour
     private Vector3 startingPosition;
     private int rot = -1;
     private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        startingPosition = transform.position;
-        InvokeRepeating("ChangeDirection", 6f, 6f);    
+        startingPosition = transform.position;    
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * velocity * -1;
     }
@@ -32,6 +32,7 @@ public class SharkBehaviour : MonoBehaviour
         //called by animation event
 
         transform.position = startingPosition;
+        ChangeDirection();
         gameObject.SetActive(false);
 
 
