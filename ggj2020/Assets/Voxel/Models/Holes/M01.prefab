@@ -126,9 +126,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holeSize: 1
   ParticleSystem: {fileID: 3885559588260479185}
-  SmallFlowRate: 0.25
-  MediumFlowRate: 0.5
-  LargeFlowRate: 0.75
+  SmallFlowRate: 0.03
+  MediumFlowRate: 0.08
+  LargeFlowRate: 0.15
 --- !u!135 &1621809908131313868
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -149,11 +149,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4928343147731025911}
     m_Modifications:
-    - target: {fileID: 8292012086817339401, guid: 624d6bd8d16e0bd428e4a4a277f87748,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Particle
-      objectReference: {fileID: 0}
     - target: {fileID: 8288202290645137165, guid: 624d6bd8d16e0bd428e4a4a277f87748,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -208,6 +203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292012086817339401, guid: 624d6bd8d16e0bd428e4a4a277f87748,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624d6bd8d16e0bd428e4a4a277f87748, type: 3}
