@@ -16,7 +16,7 @@ public class PlayerImputs : MonoBehaviour
     private bool pressedIntract;
     private bool pressedBucket;
 
-    public static bool GetBucketKey(PlayerType playerType)
+    public static bool GetBucketKeyDown(PlayerType playerType)
     {
         if (playerType == PlayerType.Player01)
         {
@@ -64,7 +64,7 @@ public class PlayerImputs : MonoBehaviour
         }
     }
 
-    public static bool GetDiscardKey(PlayerType playerType)
+    public static bool GetDiscardKeyDown(PlayerType playerType)
     {
         if (playerType == PlayerType.Player01)
         {

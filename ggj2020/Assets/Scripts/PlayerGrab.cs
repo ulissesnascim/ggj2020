@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
+public enum PlayerType { Player01, Player02 };
+
 public class PlayerGrab : MonoBehaviour
 {
-    public enum PlayerType { Player01, Player02 };
+    
     [Header("Current Player")]
     public PlayerType currentPlayer;
 
@@ -95,7 +97,7 @@ public class PlayerGrab : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(interactionKey))
+        if (PlayerImputs.GetInteractKeyDown(currentPlayer))
         {
             if(bucketReady)
             {
@@ -126,7 +128,7 @@ public class PlayerGrab : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(interactionKey))
+        if (PlayerImputs.GetInteractKeyUp(currentPlayer))
         {
             if (isCoveringHole)
             {
@@ -134,7 +136,7 @@ public class PlayerGrab : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(discardKey))
+        if (PlayerImputs.GetDiscardKeyDown(currentPlayer))
         {
             if (grabbedItem)
             {
@@ -142,12 +144,12 @@ public class PlayerGrab : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(bucketKey) && !grabbedItem && !isCoveringHole)
+        if(PlayerImputs.GetBucketKeyDown(currentPlayer) && !grabbedItem && !isCoveringHole)
         {
             ReadyBucket();
         }
         
-        if(Input.GetKeyUp(bucketKey))
+        if(PlayerImputs.GetBucketKeyUp(currentPlayer))
         {
             UnreadyBucket();
         }
