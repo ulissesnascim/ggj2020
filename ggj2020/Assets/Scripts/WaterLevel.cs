@@ -64,10 +64,14 @@ public class WaterLevel : MonoBehaviour
             if (!_hasWaterReachedTheMaximunLevel) 
             {               
                 _hasWaterReachedTheMaximunLevel = true;
+                LoseGame();
             }
-        }
-        
-        //debugLevel = CurrentWaterLevel;
+        }        
+    }
 
+    private void LoseGame()
+    {        
+        GameOver gameover = FindObjectOfType<GameOver>();
+        gameover.GameOverEffect();
     }
 }
