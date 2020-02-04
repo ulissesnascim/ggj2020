@@ -55,7 +55,7 @@ public class PlayerGrab : MonoBehaviour
     private RaycastHitType CastRayCast()
     {
         Ray ray = canera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 2);
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 1.5f);
         LayerMask layerMask = ~layersToIgnoreWhenRaycasting;
 
         if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, layerMask))
