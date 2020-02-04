@@ -115,11 +115,8 @@ public class PlayerGrab : MonoBehaviour
                 {
                     if (grabbedItem)
                     {
-                        if ((int)grabbedItem.itemSize <= (int)holeReadyToClose.holeSize)
-                        {
-                            InteractWithHoleWithGrabbedItem(holeReadyToClose);
+                         InteractWithHoleWithGrabbedItem(holeReadyToClose);
 
-                        }
                     }
                     else
                     {

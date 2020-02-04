@@ -64,7 +64,6 @@ public class HolesBehaviour : MonoBehaviour
 
     private void CreateHole(int holeIndex, Transform holePosition)
     {
-        Debug.Log(holeIndex + " " + Holes[holeIndex].gameObject);
         GameObject holeObject = Instantiate(Holes[holeIndex].gameObject, holePosition);
 
         AudioSource audioSource = holeObject.GetComponentInParent<AudioSource>();
@@ -78,8 +77,6 @@ public class HolesBehaviour : MonoBehaviour
 
     public void ReplaceHole(Hole holeToReplace, int holeSizeIndex)
     {
-        Debug.Log("replace " + holeSizeIndex);
-
         Transform holePosition = holeToReplace.transform.parent;
 
         Destroy(holeToReplace.gameObject);
