@@ -11,6 +11,10 @@ public class GrabbableItem : MonoBehaviour
     [HideInInspector] public GrabbableItemState itemState = GrabbableItemState.OnPlank;
     [SerializeField] private float offsetYFixWhenLockedToHole = 0.5f;
 
+    [Header("OPTIONAL fields - use in Silver Tape/similar cases")]
+    [SerializeField] private GameObject modelRegular = null;
+    [SerializeField] private GameObject modelWhenLockedToHole = null;
+
     private float timeBeforeDestroy = 8f;
     private float timer = 0;
     private Rigidbody rb;
@@ -88,6 +92,13 @@ public class GrabbableItem : MonoBehaviour
 
         rb.isKinematic = true;
         //transform.rotation = Quaternion.identity;
+
+        if(modelWhenLockedToHole)
+        {
+            modelRegular.SetActive(false);
+            modelWhenLockedToHole.SetActive(true);
+        }
+
         transform.localPosition = Vector3.zero;
         transform.position = hole.transform.position;
 
