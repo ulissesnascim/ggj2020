@@ -25,6 +25,7 @@ public class Hole : MonoBehaviour
     {
         _emission = ParticleSystem.emission;
         SetHoleFlowRate();
+
     }
 
     private void FixedUpdate()
@@ -41,12 +42,28 @@ public class Hole : MonoBehaviour
 
                 if(grabbableItem)
                 {
-                    if (grabbableItem.itemState == GrabbableItem.GrabbableItemState.Discarded &&
-                        (int) grabbableItem.itemSize <= (int) holeSize)
+                    if (grabbableItem.itemState == GrabbableItem.GrabbableItemState.Discarded)
                     {
-                        grabbableItem.LockToHole(this);
+                        if (!grabbableItem.negativeItem)
+                        {
+                            if ((int)grabbableItem.itemSize <= (int)holeSize)
+                            {
+                                grabbableItem.LockToHole(this);
+
+                            }
+                        }
+                        else
+                        {
+                            if (holeSize != HoleSize.Large)
+                            {
+                                grabbableItem.TearLargerHole(this);
+
+                            }
+
+                        }
 
                     }
+                        
                 }
 
             }
@@ -96,7 +113,11 @@ public class Hole : MonoBehaviour
         _isOpen = false;
         Destroy(gameObject);
 
-        HolesBehaviour.instance.currentHoleSizeCounts[(int) holeSize] -= 1;
         //Destroy(gameObject, 2.5f);
+    }
+
+    private void OnDestroy()
+    {
+        HolesBehaviour.instance.HoleDestroyed((int)holeSize);
     }
 }

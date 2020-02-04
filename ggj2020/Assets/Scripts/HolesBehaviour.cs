@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HolesBehaviour : MonoBehaviour
 {
-    [Header("Posiveis buracos a serem criados")]
+    [Header("Posiveis buracos a serem criados - NAO MUDAR ORDEM")]
     public List<Hole> Holes;
 
     [Header("Configuração do tempo dos buracos")]
@@ -12,7 +12,7 @@ public class HolesBehaviour : MonoBehaviour
     public int MinimumTimeToCreateNewHole = 2;
     public int MaximumTimeToCreateNewHole = 5;
 
-    [HideInInspector] public List<Transform> _holePositions = new List<Transform>();
+    public List<Transform> _holePositions = new List<Transform>();
     public int[] currentHoleSizeCounts = new int[]{0,0,0};
     //public Dictionary<Hole.HoleSize, int> currentHoleSizeCountsDictionary = new Dictionary<Hole.HoleSize, int>();
     private int _numberActiveHoles = 0;
@@ -35,11 +35,13 @@ public class HolesBehaviour : MonoBehaviour
             _holePositions.Add(child);           
         }
 
-        StartCoroutine(CreateHole(TimeToCreateFirstHole));
-    }  
+        StartCoroutine(CreateHoleRoutine(TimeToCreateFirstHole));
 
-    private IEnumerator CreateHole(float time)
+    } 
+
+    private IEnumerator CreateHoleRoutine(float time)
     {
+        Debug.Log("create hole " + _holePositions.Count);
         yield return new WaitForSeconds(time);
 
         int p = Random.Range(0, _holePositions.Count);
@@ -47,27 +49,59 @@ public class HolesBehaviour : MonoBehaviour
            
         if (_holePositions[p].childCount == 0)
         {
-            GameObject holeObject = Instantiate(Holes[h].gameObject, _holePositions[p]);
-            _numberActiveHoles++;
-
-            AudioSource audioSource = holeObject.GetComponentInParent<AudioSource>();
-            audioSource.PlayOneShot(audioSource.clip);
-
-            Hole holeSize = holeObject.GetComponent<Hole>();
-            
-            currentHoleSizeCounts[h] += 1;
-            
+            Debug.Log("true " + _holePositions.Count);
+            CreateHole(h, _holePositions[p]);
         }
         else
         {
-            StartCoroutine(CreateHole(0f));
+            StartCoroutine(CreateHoleRoutine(0f));
             yield break;
         }
+
+        Debug.Log("antes do segundo if " + _holePositions.Count);
 
         if (_numberActiveHoles < _holePositions.Count)
         {
             int t = Random.Range(MinimumTimeToCreateNewHole, MaximumTimeToCreateNewHole);
-            StartCoroutine(CreateHole(t));
+            StartCoroutine(CreateHoleRoutine(t));
         }
     }
+
+    private void CreateHole(int holeIndex, Transform holePosition)
+    {
+        GameObject holeObject = Instantiate(Holes[holeIndex].gameObject, holePosition);
+
+        AudioSource audioSource = holeObject.GetComponentInParent<AudioSource>();
+        audioSource.PlayOneShot(audioSource.clip);
+
+        Hole holeSize = holeObject.GetComponent<Hole>();
+        
+        _numberActiveHoles++;
+        currentHoleSizeCounts[holeIndex] += 1;
+    }
+
+    public void ReplaceHole(Hole holeToReplace, int holeSizeIndex)
+    {
+        Transform holePosition = holeToReplace.transform.parent;
+
+        Destroy(holeToReplace.gameObject);
+
+        CreateHole(holeSizeIndex--, holePosition);
+
+    }
+
+    public void HoleDestroyed(int holeSizeIndex)
+    {
+        if (_numberActiveHoles > 0)
+        {
+            _numberActiveHoles--;
+        }
+
+        if (currentHoleSizeCounts[holeSizeIndex] > 0)
+        {
+            currentHoleSizeCounts[holeSizeIndex]--;
+        }
+
+    }
+
 }

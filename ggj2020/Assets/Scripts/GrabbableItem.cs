@@ -6,10 +6,12 @@ using UnityEngine;
 public class GrabbableItem : MonoBehaviour
 {
     public GrabbableItemSize itemSize = GrabbableItemSize.Small;
+    public bool negativeItem = false;
+
     [HideInInspector] public GrabbableItemState itemState = GrabbableItemState.OnPlank;
     [SerializeField] private float offsetYFixWhenLockedToHole = 0.5f;
 
-    private float timeBeforeDestroy = 5f;
+    private float timeBeforeDestroy = 8f;
     private float timer = 0;
     private Rigidbody rb;
     private AudioSource audioSource;
@@ -96,6 +98,17 @@ public class GrabbableItem : MonoBehaviour
         hole.CloseHole();
         itemState = GrabbableItemState.ClosingHole;
     }
+
+    public void TearLargerHole(Hole hole)
+    {
+        AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
+
+        HolesBehaviour.instance.ReplaceHole(hole, (int) hole.holeSize);
+
+        Destroy(gameObject);
+
+    }
+
       /*     
     private void OnTriggerEnter(Collider other)
     {

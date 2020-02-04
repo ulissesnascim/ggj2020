@@ -117,7 +117,7 @@ public class PlayerGrab : MonoBehaviour
                     {
                         if ((int)grabbedItem.itemSize <= (int)holeReadyToClose.holeSize)
                         {
-                            CloseHoleWithGrabbedItem(holeReadyToClose);
+                            InteractWithHoleWithGrabbedItem(holeReadyToClose);
 
                         }
                     }
@@ -187,9 +187,25 @@ public class PlayerGrab : MonoBehaviour
         arm.Hide();
     }
 
-    private void CloseHoleWithGrabbedItem(Hole hole)
+    private void InteractWithHoleWithGrabbedItem(Hole hole)
     {
-        grabbedItem.LockToHole(hole);
+        if (!grabbedItem.negativeItem)
+        {
+            if ((int)grabbedItem.itemSize <= (int)hole.holeSize)
+            {
+                grabbedItem.LockToHole(hole);
+
+            }
+        }
+        else
+        {
+            if (hole.holeSize != Hole.HoleSize.Large)
+            {
+                grabbedItem.TearLargerHole(hole);
+
+            }
+
+        }
 
         grabbedItem = null;
     }
