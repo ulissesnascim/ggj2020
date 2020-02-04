@@ -4,11 +4,17 @@ using DG.Tweening;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameOver : MonoBehaviour
-{   
+{
+    private float _timeSurvived;
+    private bool _hasLost = false;
+
     public Image Background;
    
     public void GameOverEffect()
     {
+        _hasLost = true;
+        PlayerPrefs.SetFloat("timeSurvived", _timeSurvived);
+
         Background.DOColor(Color.black, 2.5f).OnComplete(() => 
         {
             LevelManager levelManager = FindObjectOfType<LevelManager>();
@@ -22,5 +28,13 @@ public class GameOver : MonoBehaviour
 
             levelManager.GoToScene("GameOver");
         });
+    }
+
+    private void Update()
+    {
+        if (!_hasLost)
+        {
+            _timeSurvived += Time.deltaTime;
+        }
     }
 }
