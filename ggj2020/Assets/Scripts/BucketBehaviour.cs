@@ -42,6 +42,8 @@ public class BucketBehaviour : MonoBehaviour
     {
         if(!isEmpty)
         {
+            GetComponentInParent<AudioSource>().GetComponent<PlayerGrab>().PlayErrorSound();             //GAMBIARRA - PRECISA SER REVISTO
+
             WaterLevel.instance.AddWater(amout);
         }
     }

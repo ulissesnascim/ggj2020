@@ -1865,6 +1865,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6255681915208272282, guid: faa622046a421cb448a738fd4ca8a973,
+        type: 3}
+      propertyPath: muteMovementSound
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6818684083152232570, guid: faa622046a421cb448a738fd4ca8a973,
         type: 3}
       propertyPath: _layersToIgnoreWhenRaycasting.Array.size
@@ -1915,6 +1920,11 @@ PrefabInstance:
       propertyPath: layersToIgnoreWhenRaycasting.m_Bits
       value: 768
       objectReference: {fileID: 0}
+    - target: {fileID: 6818684083152232570, guid: faa622046a421cb448a738fd4ca8a973,
+        type: 3}
+      propertyPath: errorClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ca639dfb1bb05542bead277c1658b24, type: 3}
     - target: {fileID: 7759234261098574788, guid: faa622046a421cb448a738fd4ca8a973,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -2053,7 +2063,7 @@ PrefabInstance:
     - target: {fileID: 6255681915194697114, guid: faa622046a421cb448a738fd4ca8a973,
         type: 3}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faa622046a421cb448a738fd4ca8a973, type: 3}
@@ -2628,6 +2638,11 @@ PrefabInstance:
       propertyPath: bucketKey
       value: 336
       objectReference: {fileID: 0}
+    - target: {fileID: 6818684083152232570, guid: faa622046a421cb448a738fd4ca8a973,
+        type: 3}
+      propertyPath: errorClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ca639dfb1bb05542bead277c1658b24, type: 3}
     - target: {fileID: 7759234261098574788, guid: faa622046a421cb448a738fd4ca8a973,
         type: 3}
       propertyPath: m_LocalPosition.x

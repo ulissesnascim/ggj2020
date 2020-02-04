@@ -19,6 +19,7 @@ public class PlayerGrab : MonoBehaviour
     [SerializeField] private Transform grabbedItemTransformParent = null;
     [SerializeField] private LayerMask grabbableItemsLayer = 0;
     [SerializeField] private LayerMask layersToIgnoreWhenRaycasting;
+    [SerializeField] private AudioClip errorClip = null;
 
     [Header("Player Inputs")]
     public KeyCode interactionKey = KeyCode.U;
@@ -125,6 +126,11 @@ public class PlayerGrab : MonoBehaviour
                         StartCoveringHole();
                     }
                 }
+                else if (hitType == RaycastHitType.None)
+                {
+                    PlayErrorSound();
+
+                }
             }
         }
 
@@ -196,6 +202,10 @@ public class PlayerGrab : MonoBehaviour
                 grabbedItem = null;
 
             }
+            else
+            {
+                PlayErrorSound();
+            }
         }
         else
         {
@@ -229,5 +239,10 @@ public class PlayerGrab : MonoBehaviour
         grabbedItem.transform.SetParent(null);
 
         grabbedItem = null;
+    }
+
+    public void PlayErrorSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(errorClip);
     }
 }
