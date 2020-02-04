@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class WaterLevel : MonoBehaviour
 {
@@ -64,10 +65,21 @@ public class WaterLevel : MonoBehaviour
             if (!_hasWaterReachedTheMaximunLevel) 
             {               
                 _hasWaterReachedTheMaximunLevel = true;
+                LoseGame();
             }
-        }
-        
-        //debugLevel = CurrentWaterLevel;
+        }        
+    }
 
+    private void LoseGame()
+    {
+        FirstPersonController[] fps = FindObjectsOfType<FirstPersonController>();
+        GameOver gameover = FindObjectOfType<GameOver>();
+
+        for (int i = 0; i < fps.Length; i++)
+        {
+            fps[i].CanMove = false;
+        }
+
+        gameover.GameOverEffect();
     }
 }
